@@ -1,0 +1,80 @@
+body {
+    font-family: 'roboto', sans-serif;
+    background-color: #d6d6d6;
+    margin: 0;
+    padding: 0;
+    min-height: 4000px;
+}
+
+header {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/fd/Atacama_Desert_%28Unsplash%29.jpg");
+    background-position-y: center bottom;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    letter-spacing: 2px;
+    background-attachment: fixed;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+    gap: 5px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 20px;
+    text-align: left;
+}
+
+nav ul li a:hover {
+    background-color: #2c2c2c9a;
+    border-radius: 5px;
+    color: white;
+}
+
+.right-align {
+    margin-left: auto;
+}
+
+/* The dropdown menu (initially hidden) */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    /* positions relative to parent li */
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid #555;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Show on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
