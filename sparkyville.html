@@ -11,6 +11,36 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+
+	<style>
+		body {
+			background: #222;
+			margin-top: 100px;
+		}
+
+		h3 {
+			color: #eee;
+			font-family: Verdana;
+		}
+
+		.thumbnails img {
+			height: 100px;
+			border: 4px solid #555;
+			padding: 1px;
+			margin: 0 10px 10px 0;
+		}
+
+		.thumbnails img:hover {
+			border: 4px solid #00ccff;
+			cursor: pointer;
+		}
+
+		.preview img {
+			border: 4px solid #444;
+			padding: 1px;
+			width: 800px;
+		}
+	</style>
 </head>
 
 <body class="left-sidebar is-preload">
@@ -163,38 +193,119 @@
 									every year, until 2025 where
 									a background windows security update finally bricked the laptop.
 								</p>
-								<p>Phasellus nisl nisl, varius id porttitor sed, pellentesque ac orci. Pellentesque
-									habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-									Morbi
-									bibendum justo sed mauris vehicula malesuada aliquam elit imperdiet. Aliquam eu nibh
-									lorem, eget gravida mi. Duis odio diam, luctus et vulputate vitae, vehicula ac
-									dolor.
-									Pellentesque at urna eget tellus lobortis ultrices sed non erat. Donec eget erat non
-									magna volutpat malesuada quis eget eros. Nullam sodales cursus sapien, id consequat
-									leo suscipit ut. Praesent id turpis vitae turpis pretium ultricies. Vestibulum sit
-									amet risus elit.</p>
-								<p>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra
-									ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec
-									orci
-									eget quam rutrum bibendum. Proin pellentesque diam non ligula commodo tempor.
-									Vivamus
-									eget urna nibh. Curabitur non fringilla nisl. Donec accumsan interdum nisi, quis
-									tincidunt felis sagittis eget. Donec elementum ligula dignissim sem pulvinar non
-									semper
-									odio eleifend. Duis commodo fringilla commodo. Aliquam erat volutpat. Vestibulum
-									facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam
-									tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-									posuere cubilia.</p>
-								<p>Phasellus nisl nisl, varius id porttitor sed, pellentesque ac orci. Pellentesque
-									habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-									Morbi
-									bibendum justo sed mauris vehicula malesuada aliquam elit imperdiet. Aliquam eu nibh
-									lorem, eget gravida mi. Duis odio diam, luctus et vulputate vitae, vehicula ac
-									dolor.
-									Pellentesque at urna eget tellus lobortis ultrices sed non erat. Donec eget erat non
-									magna volutpat malesuada quis eget eros. Nullam sodales cursus sapien, id consequat
-									leo suscipit ut. Praesent id turpis vitae turpis pretium ultricies. Vestibulum sit
-									amet risus elit.</p>
+
+								<div class="gallery" align="center">
+									<div class="thumbnails">
+										<!-- NO inline onmouseover attributes! -->
+										<img src="images/Sparkyville/Sparkyville_Old.png" alt="Sparkyville Old" />
+										<img src="images/Sparkyville/Sparkyville_Old_Interface.png"
+											alt="Sparkyville Old Interface" />
+										<img src="images/Sparkyville/Sparkyville_Old_Deconstruction.png"
+											alt="Sparkyville Old Deconstruction" />
+										<img src="images/Sparkyville/Sparkyville_Old_Table.jpg"
+											alt="Sparkyville Table" />
+									</div>
+									<br />
+									<!-- .preview has just one img -->
+									<div class="preview" align="center">
+										<img src="images/Sparkyville/Sparkyville_Old.png" alt="No Image Loaded" />
+									</div>
+								</div>
+
+								<p><strong> <i> <u>Design Considerations</u></i>: </strong>
+									The first goal was to meet with the program professors to ensure we are hitting all
+									their desired features, as well as getting a rough estimate for the budget. The
+									following requirements were laid out by the teaching team for a replacement.
+
+								<div style="padding-left: 2vw;">
+									<li> Live-read student project output from 0-50mW over a 220Ω Resistor </li>
+									<li> User interface that students can use without training </li>
+									<li> Weatherproof, as it will be left outside for months at a time </li>
+									<li> Controls for pump/fan/lights </li>
+								</div>
+								</p>
+
+								<p>
+									Given these requirements, we were also given limitations to ensure it would meet the
+									requirements laid out by the program.
+
+								<div style="padding-left: 2vw;">
+									<li> Must be mobile so it can be stored inside during off-semesters. </li>
+									<li> Must be build to code (UL). </li>
+									<li> Must include an emergency stop. </li>
+									<li> Must include fuses for inline power. </li>
+									<li> Should be set up for months at a time with regular usage. </li>
+									<li> Soft-budget of $1,000. </li>
+								</div>
+								</p>
+
+								<p>
+									<strong> <i> <u>Ideation</u></i>: </strong>
+
+									The requirements for this project immediately made me think of Programmable Logic
+									Controllers (PLCs). The necessity for reliability, combined with the harsh
+									environmental conditions,
+									made this solution shine in comparison to other options. I had experience
+									programming PLCs, so it made perfect sense to go this route. After comparison
+									shopping and reaching out to
+									local companies to try to get donations we finally settled on using an IDEC
+									FT1A-Touch. This PLC features a touchscreen interface, which means I already have
+									easy access to one of the
+									project requirements. While they generally retail for ~$400, a local company offered
+									to donate a demo unit for our project. IDEC also graciously provided their software
+									as we are a student
+									organization.
+								</p>
+								<p> We then started on a UML programming diagram. This helped understand the hardware
+									requirements by moving through the logic. While this is far from the final software
+									design, as many other
+									problems came up during fabrication, this was a good stepping-off point. Following
+									that, we got to work on the wiring diagram. This wiring diagram covers the final
+									hardware as selected, with the
+									exception of the PLC. Our original design involved using an Allen Bradley Micro 2080
+									with a Panelview Touchscreen, but due to a sponsor dropping out we had to replace it
+									with the final selection.
+								</p>
+								<div class="gallery" align="center">
+									<div class="thumbnails">
+										<img src="images/Sparkyville/SparkyvillePanel.png" alt="Panel Design" />
+										<img src="images/Sparkyville/SparkyvilleUML.png" alt="Programming Logic" />
+									</div>
+									<br />
+									<div class="preview" align="center">
+										<img src="images/Sparkyville/SparkyvillePanel.png" alt="No Image Loaded" />
+									</div>
+								</div>
+								<p>
+									<strong> <i> <u>Final Build</u></i>: </strong>
+
+									While reaching out to local companies I made an interesting discovery. Many manufacturing companies are starved for
+									skilled employees. The reception from my public outreach as incredible and extremely impressive. We managed to design
+									and construct the entire project exclusively from donated hardware, using none of the budget allocated for the 
+									project. This money could now be reintegrated into the cirriculum. Our final hardware list was a grab-bag of equipment
+									that was donated, much of it without names or part-numbers attached. 
+								</p>
+								<div class="gallery" align="center">
+									<div class="thumbnails">
+										<img src="images/Sparkyville/SparkyvillePanel.png" alt="Panel Design" />
+										<img src="images/Sparkyville/SparkyvilleUML.png" alt="Programming Logic" />
+									</div>
+									<br />
+									<div class="preview" align="center">
+										<img src="images/Sparkyville/SparkyvillePanel.png" alt="No Image Loaded" />
+									</div>
+								</div>
+
+								<p>
+									<strong> <i> <u>Post-Mortem</u></i>: </strong>
+
+									I learned a lot working on this project. Not only about PLC programming, which was my target area of improvement, but
+									also interfacing with businesses. Talking to individuals along the entire production process from design, sales, and fabrication to learn
+									how to correctly integrate the donated hardware. I am extremely proud of the final project, as it taught me a lot about UI design, 
+									PLC programming, panel-design, weatherproofing, and various other skills. We manages to hit all of our target requirements while using none
+									of the budget. I will bring other members from my club in to do some beautification passes, such as sanding the dirty aluminum table to reseal it,
+									as well as add wire-channels to make it easier to move and lower-risk of breaking from long-term usage.
+								</p>
 							</article>
 							<div class="row gtr-150">
 								<div class="col-6 col-12-small">
@@ -376,6 +487,29 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Find all .gallery containers
+			var galleries = document.querySelectorAll('.gallery');
+
+			galleries.forEach(function (gallery) {
+				// Within each .gallery, find the one .preview img and all .thumbnails img
+				var previewImg = gallery.querySelector('.preview img');
+				var thumbnails = gallery.querySelectorAll('.thumbnails img');
+
+				// For each thumbnail in this gallery…
+				thumbnails.forEach(function (thumb) {
+					thumb.addEventListener('mouseover', function () {
+						// …update that gallery’s big preview
+						previewImg.src = this.src;
+					});
+				});
+			});
+		});
+	</script>
+
+
 
 </body>
 
