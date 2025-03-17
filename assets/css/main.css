@@ -2687,6 +2687,7 @@ input, select, textarea {
 					line-height: 44px;
 					border-top: solid 1px rgba(255, 255, 255, 0.05);
 					margin: 0 15px 0 15px;
+					overflow: clip;
 				}
 
 					#navPanel .link:first-child {
