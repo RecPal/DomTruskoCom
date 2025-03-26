@@ -186,7 +186,8 @@
 												class="image left"><img src="images/RadiationAnalysis/SlidesICO.png"
 													alt="" /></a>
 											<h3 style="color: rgb(96, 96, 96);"><a
-													href="https://docs.google.com/presentation/d/e/2PACX-1vTzucJuaBxubnOXV06HV8dDGx77TTNzN6ioapoT-Fr-uwEjulUFt1yml4MFjXVKXqSbGkrhBQQHUDWD/pub?start=true&loop=true&delayms=10000#slide=id.g33575f5f29f_2_1234"> Presentation </a>
+													href="https://docs.google.com/presentation/d/e/2PACX-1vTzucJuaBxubnOXV06HV8dDGx77TTNzN6ioapoT-Fr-uwEjulUFt1yml4MFjXVKXqSbGkrhBQQHUDWD/pub?start=true&loop=true&delayms=10000#slide=id.g33575f5f29f_2_1234">
+													Presentation </a>
 											</h3>
 											<p> Our Final Presentation with videos and animations included.
 											</p>
@@ -206,58 +207,90 @@
 									<h2>Radiological Material Sorting Interface</h2>
 									<p>Developed for the Los Alamos National Labs 2025 Spring Hackathon</p>
 								</header>
+								<iframe
+									src="https://lumalabs.ai/embed/c1694a18-ab24-41bd-8cd8-60d513e760d2?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
+									width="100%" height="500" frameborder="0" title="luma embed"
+									style="border: none;"></iframe>
+
 								<a href="#" class="image featured">
-									<img src="images/IntoTheVoid/BannerArt.png" alt="" style="border-width: 2px;
+									<img src="images/RadiationAnalysis/Problem.png" alt="" style="border-width: 2px;
   border-style: solid;" />
 								</a>
-								<p><strong> <i> <u>The Problem</u></i>: </strong> To prove our commitment to game
-									development, the informatics school
-									at Arizona State University mandates all students in the program participate in a
-									"Game Jam". For the uninitiated, a Game Jam is a competition where a team of
-									developers are tasked with making a video game, from ideation to completion, in a
-									limited time frame. For this Game Jam, the time limit was 3 weeks.
-									Teams were restricted to 4 members, but due to the crew's continued excellence in
-									prior assignments, we were allowed to work in a team of 7 under the condition that
-									we
-									developed something far beyond the scope of the course.
+
+								<p><strong> <i> <u>The Problem</u></i>: </strong>
+									Los Alamos National Labs has a rather archaic system for radioactive waste disposal.
+									To try to alleviate this,
+									they decided to host tournaments for students to devise ideas for ways to tackle a
+									few primary issues with their
+									current system.
+
+								<div style="padding-left: 2vw;">
+									<li> Operators are regularly dosed with radiation due to the nature of their work
+										environment. </li>
+									<li> Operators expose themselves to contaminant risks due to some materials being
+										sharp and cutting gloves. </li>
+									<li> Dropping waste into the disposal containers can destroy the internal liner,
+										exposing the workspace to radiation.
+									</li>
+								</div>
 								</p>
+
+
 
 								<div style="padding-top: 1vh"></div>
 
 								<p><strong> <i> <u>Design Considerations</u></i>: </strong>
-									From the beginning we knew we wanted to make a Virtual Reality game. Many of the
-									programmers on the project wanted to work in the VR industry, especially as the
-									Valve Index had launched a few years prior, making earlier SteamVR headsets (Such as
-									the HTC Vive) affordable to college students.
-									I had been working on VR projects since ~2014 on my Oculus Rift Devkit 2, using
-									flashed Razer Hydra magnetic tracking controllers to interface with the worlds I
-									created. I took the lead on the project to prevent potential learning friction, and
-									after discussing potential project ideas we set the following criteria for our VR
-									game.
+									Our team decided to try to meet these goals utilizing telepresence. Trying to remove
+									the operator from the assembly, while not
+									severely hindering their ability to fullfil their role. To do this, we decided to
+									use a <a
+										href="https://www.dobot-robots.com/products/education/magician-lite.html">Dobot
+										Magician Lite</a>, as they were made available for project teams, as well as a
+									stepper-motor driven conveyor belt. All other components were technically
+									supplementary, but were effective
+									at conveying our idea. Our final design was decided on Friday, so to convey this
+									information to our advisor from
+									Los Alamos I created this animation in 2 hours using Blender.
 
-								<div style="padding-left: 2vw;">
-									<li> No Artificial Locomotion (The space must be navigable in the real world). </li>
-									<li> Most interactions should be within 6 feet, as the Vive's focal range is roughly
-										2m. </li>
-									<li> Minimize controller button presses, try to bind interactions to real objects.
-									</li>
-									<li> Must not induce nausea in the average player during the playtest. </li>
-								</div>
+								<div style="padding-top: 1vh"></div>
+
+								<iframe width="100%" height="360"
+									src="https://www.youtube.com/embed/QXD9l78L-RA?si=FZ-gR9Cbf4g15goE"
+									title="YouTube video player" frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+									referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 								</p>
 
 								<p>
-									Besides the VR limitations, we also had limitation placed due to the nature of the
-									project. Even if we had decided against making a Virtual Reality project, these
-									would have still applied.
+									We got to building Saturday morning around 8am. Our roboticists began programming
+									the robot, while the electrical and mechanical
+									people got to work on the enclosure. I made the user interface with <a
+										href="https://github.com/hoffstadt/DearPyGui">PyGUI</a> pretty
+									quickly, it was chosen since the documentation is fantastic. Below are a collection
+									of images from our workspace taken by the event
+									photographer showing our working Saturday. We were extremely tired due to the nature
+									of the project timeframe, our data preservation skills
+									were rather poor given our rushed timeframe, much of it had to be submitted with the
+									submission with the data cleared from our machines.
 
-								<div style="padding-left: 2vw;">
-									<li> $0 Budget, all assets must be made in house or accessible under Creative
-										Commons. </li>
-									<li> Must be developed within 3 weeks. </li>
-									<li> Must be demoable at the game-jam showcase. </li>
-									<li> Cannot include scenes of gore, sexual themes, or acts of extreme violence.
-									</li>
-									<li> Demo must be longer than 5 minutes, and shorter than 20 minutes. </li>
+								<div class="gallery" align="center">
+									<div class="thumbnails">
+										<img src="images/RadiationAnalysis/Checkin.jpg" alt="Checkin" />
+										<img src="images/RadiationAnalysis/Dev.jpg" alt="Dev" />
+										<img src="images/RadiationAnalysis/Dev1.png" alt="Dev1" />
+										<img src="images/RadiationAnalysis/Dev2.png" alt="Dev2" />
+										<img src="images/RadiationAnalysis/Dev3.png" alt="Dev3" />
+										<img src="images/RadiationAnalysis/Dev4.png" alt="Dev4" />
+										<img src="images/RadiationAnalysis/Dev5.png" alt="Dev5" />
+										<img src="images/RadiationAnalysis/Lab.jpg" alt="Lab" />
+										<img src="images/RadiationAnalysis/Lab_Paint.jpg" alt="Lab_Paint" />
+										<img src="images/RadiationAnalysis/Dev6.png" alt="Dev6" />
+									</div>
+									<br />
+									<div class="preview" align="center">
+										<img src="images/IntoTheVoid/Jam3/VoidPre_Variations.png"
+											alt="No Image Loaded" />
+									</div>
 								</div>
 								</p>
 
