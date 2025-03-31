@@ -280,18 +280,25 @@
 									hardware list was a grab-bag of equipment
 									that was donated, much of it without names or part-numbers attached.
 								</p>
+								<p>
+									To see what the final project looks like, check out the 3d scan included at the top
+									of the page. Below are pictures of the interior of the panel, as well
+									as a video of the touch-screen interface I designed.
+								</p>
 								<div class="gallery" align="center">
 									<div class="thumbnails">
-										<img src="images/Sparkyville/SparkyvillePanel.png" alt="Panel Design" />
-										<img src="images/Sparkyville/SparkyvilleUML.png" alt="Programming Logic" />
+										<img src="images/Sparkyville/Panel_Exterior.png" alt="Panel Design" />
+										<img src="images/Sparkyville/Panel_Interior.png" alt="Programming Logic" />
+										<img src="images/Sparkyville/UI_Operating_2.gif" alt="UserInterface" />
 									</div>
 									<br />
 									<div class="preview" align="center">
-										<img src="images/Sparkyville/SparkyvillePanel.png" alt="No Image Loaded" />
+										<img src="images/Sparkyville/UI_Operating_2.gif" alt="No Image Loaded" />
 									</div>
 								</div>
 
 								<div style="padding-top: 1vh"></div>
+
 
 								<p>
 									<strong> <i> <u>Post-Mortem</u></i>: </strong>
@@ -317,7 +324,7 @@
 			</div>
 		</section>
 
-		<!-- Highlights -->
+		<!-- Highlights 
 		<section id="highlights" class="wrapper style3">
 			<div class="title">Related Projects</div>
 			<div class="container">
@@ -357,17 +364,19 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 		<!-- Footer -->
+		<!-- Footer -->
 		<section id="footer" class="wrapper">
-			<div class="title">The Rest Of It</div>
+			<div class="title">Contact</div>
 			<div class="container">
 				<header class="style1">
-					<h2>Ipsum sapien elementum portitor?</h2>
+					<h2>Interested in reaching out?</h2>
 					<p>
-						Sed turpis tortor, tincidunt sed ornare in metus porttitor mollis nunc in aliquet.<br />
-						Nam pharetra laoreet imperdiet volutpat etiam feugiat.
+						I am always looking to help, either contact me on one of my Social Media accounts or use the
+						contact<br />
+						form listed below and I will be sure you return your message
 					</p>
 				</header>
 				<div class="row">
@@ -407,9 +416,8 @@
 									<section>
 										<h3 class="icon solid fa-home">Mailing Address</h3>
 										<p>
-											Untitled Corp<br />
-											1234 Somewhere Rd<br />
-											Nashville, TN 00000
+											4374 East Erie Street<br />
+											Gilbert, AZ 85295
 										</p>
 									</section>
 								</div>
@@ -417,9 +425,9 @@
 									<section>
 										<h3 class="icon solid fa-comment">Social</h3>
 										<p>
-											<a href="#">@untitled-corp</a><br />
-											<a href="#">linkedin.com/untitled</a><br />
-											<a href="#">facebook.com/untitled</a>
+											<a href="https://github.com/RecPal">github.com/RecPal</a><br />
+											<a
+												href="https://www.linkedin.com/in/dominick-trusko-90868a256/">linkedin.com/dtrusko</a><br />
 										</p>
 									</section>
 								</div>
@@ -427,7 +435,7 @@
 									<section>
 										<h3 class="icon solid fa-envelope">Email</h3>
 										<p>
-											<a href="#">info@untitled.tld</a>
+											<a href="#">dtrusko@gmail.com</a>
 										</p>
 									</section>
 								</div>
@@ -435,7 +443,7 @@
 									<section>
 										<h3 class="icon solid fa-phone">Phone</h3>
 										<p>
-											(000) 555-0000
+											(415) 860-5126
 										</p>
 									</section>
 								</div>
@@ -446,7 +454,7 @@
 				</div>
 				<div id="copyright">
 					<ul>
-						<li>&copy; Untitled.</li>
+						<li>&copy; DomTrusko.</li>
 						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
@@ -477,6 +485,13 @@
 				thumbnails.forEach(function (thumb) {
 					thumb.addEventListener('mouseover', function () {
 						// …update that gallery’s big preview
+
+						if (this.src.endsWith('.gif')) {
+							previewImg.src = this.src + '?t=' + new Date().getTime();
+						} else {
+							previewImg.src = this.src;
+						}
+
 						previewImg.src = this.src;
 					});
 				});
