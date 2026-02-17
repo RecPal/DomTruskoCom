@@ -202,14 +202,6 @@
 									<h2>Crash-Detection Bicycle Helmet</h2>
 									<p>Developed for ASU's EGR304 Integrated System Design Course</p>
 								</header>
-								<iframe
-									src="https://lumalabs.ai/embed/c1694a18-ab24-41bd-8cd8-60d513e760d2?mode=sparkles&background=%23ffffff&color=%23000000&showTitle=true&loadBg=true&logoPosition=bottom-left&infoPosition=bottom-right&cinematicVideo=undefined&showMenu=false"
-									width="100%" height="500" frameborder="0" title="luma embed"
-									style="border: none;"></iframe>
-
-								<a href="#" class="image featured">
-									<img src="images/RadiationAnalysis/Problem.png" alt="" style="border-width: 2px;
-  border-style: solid;" />
 								</a>
 
 								<p><strong> <i> <u>The Problem</u></i>: </strong>
@@ -239,74 +231,50 @@
 									circuit board manufacturing. Finally, we were required to demo the unit at a showcase, which means the final prototype needed
 									to be mobile as well as function for the full five-hours continuously.
 
-								<div style="padding-top: 1vh"></div>
-
-								<iframe width="100%" height="360"
-									src="https://www.youtube.com/embed/QXD9l78L-RA?si=FZ-gR9Cbf4g15goE"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-									referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								<div style="padding-top: 0.5vh"></div>
 								</p>
+
+								<p> <p><strong> <i> <u> Initial Design and Prototyping </u></i>: </strong>
+									To maximize our work time, our team elected to start our prototyping phase early. We developed testing criteria to test before we 
+									began prototyping.
+
+									<div style="padding-left: 2vw;">
+
+									<li> System must be able to discern a crash event from normal riding behavior. </li>
+										<ul>
+											<li> Strap the sensor bus to a moving bicycle and ride around to ensure no false-positive </li>
+											<li> Attach sensors to helmet, wrap in a towel, and throw from various heights until the system triggers. </li>
+										</ul>
+									
+									<li> System must be able to report crash event </li>
+										<ul>
+											<li> Send/Recieve commands between helmet and smartphone </li>
+											<li> Capable of calling phone-numbers and reporting information </li>
+										</ul>
+									<li> The system must have a convenient, simple cancellation system. </li>
+										<ul>
+											<li> Test cancellation system one-handed, wearing thick gloves, with no visuals. </li>
+											<li> Ensure auditory cue is vivid enough to be notified over loud ambient noise. </li>
+										</ul>
+										</div>
+								</p>
+
+								<p><strong> <i> <u> Crash Detection </u></i>: </strong>
+									Crash detection is the main focus of our project, and a large part of that is being able to discern a crash event from normal riding behavior.
+									Our methodology for this was to use an accelerometer alongside the microcontroller to log the position change per CPU cycle. This single sensor 
+									is responsible for the majority of the functionality. Crashes have a very unique signature when logged, primarily due to the rapid acceleration spike followed
+									by a longer period of reduced movement. During testing, we logged data coming off the sensor as we wrapped it in increasing dampening material and threw it from
+									increasing heights. We found that even if cushioned by two thick towels, the accelerometer would still log a significant spike in acceleration when falling from
+									a squatting height, which would be less than is required from a normal rider. This is well within our testing parameters, accounting for the potential of someone to break
+									their fall due to a jacket or backpack.
+								<div style="padding-top: 0.5vh"></div>
+								</p>
+
 
 								<p>
-									We got to building Saturday morning around 8am. Our roboticists began programming
-									the robot, while the electrical and mechanical
-									people got to work on the enclosure. I made the user interface with <a
-										href="https://github.com/hoffstadt/DearPyGui">PyGUI</a> pretty
-									quickly, it was chosen since the documentation is fantastic. Below are a collection
-									of images from our workspace taken by the event
-									photographer showing our working Saturday. We were extremely tired due to the nature
-									of the project timeframe, our data preservation skills
-									were rather poor given our rushed timeframe, much of it had to be submitted with the
-									submission with the data cleared from our machines.
-
-								<div class="gallery" align="center">
-									<div class="thumbnails">
-										<img src="images/RadiationAnalysis/Checkin.jpg" alt="Checkin" />
-										<img src="images/RadiationAnalysis/Dev.jpg" alt="Dev" />
-										<img src="images/RadiationAnalysis/Dev1.png" alt="Dev1" />
-										<img src="images/RadiationAnalysis/Dev2.png" alt="Dev2" />
-										<img src="images/RadiationAnalysis/Dev3.png" alt="Dev3" />
-										<img src="images/RadiationAnalysis/Dev4.png" alt="Dev4" />
-										<img src="images/RadiationAnalysis/Dev5.png" alt="Dev5" />
-										<img src="images/RadiationAnalysis/Lab.jpg" alt="Lab" />
-										<img src="images/RadiationAnalysis/Lab_Paint.jpg" alt="Lab_Paint" />
-										<img src="images/RadiationAnalysis/Dev6.png" alt="Dev6" />
-									</div>
-									<br />
-									<div class="preview" align="center">
-										<img src="images/RadiationAnalysis/Lab.jpg" alt="No Image Loaded" />
-									</div>
-								</div>
-								</p>
-
-								<p>
-									We stayed up all night Saturday to ensure we tested all edge cases for the final
-									presentation Sunday morning. We also spent
-									Sunday morning making the video and finalizing the presentation. Below is the video
-									of the final project running, while I
-									explain what is happening during each phase of the process.
-
-								<div style="padding-top: 1vh"></div>
-
-								<iframe width="100%" height="350"
-									src="https://www.youtube.com/embed/BmxCrGjg68E?si=CeeW5gwG0eU02FYy"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-									referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								</p>
-
-								</p>
-
-								<p>
-									<strong><u><i>Presentation: </i></u> </strong>
-									Our project was a showstopped, many groups had only concepted their designs, with
-									little to no prototyping, while our
-									design was a nearly fully functional prototype (An actualy production variant of
-									this system would include a mass-spectrometer).
-									After the award ceremony, all we wanted to do was go home and sleep, this image was
-									taken after
-									the ceremony to commemorate our $2500 scholarship win.
+									<strong><u><i>Final Design: </i></u> </strong>
+									Our final prototype externally consists of exclusively a helmet with a USBC Port on it. All hardware is internally mounted, being resealed by reinserting the internal
+									foam cutaway to minimize potential damage risk from external components, along with protecting the safety equipment.
 
 								<div style="padding-top: 1vh"></div>
 
