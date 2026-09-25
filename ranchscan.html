@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property 3D Scan</title>
+    
+    <!-- Import the model-viewer component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+    <style>
+        /* Reset margins and ensure the page takes up the full screen */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #e5e7eb; /* A neutral gray background */
+            overflow: hidden; /* Hides scrollbars */
+            font-family: sans-serif;
+        }
+
+        /* Make the 3D viewer fill the entire screen */
+        model-viewer {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Render the 3D model using the path you provided -->
+    <model-viewer 
+        src="/assets/meshes/ranchmesh.glb" 
+        camera-controls 
+        auto-rotate 
+        shadow-intensity="1"
+        alt="A 3D scan of the property">
+    </model-viewer>
+
+</body>
+</html>
