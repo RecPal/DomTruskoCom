@@ -2984,3 +2984,8 @@ input, select, textarea {
 						}
 
 	}
+/* Shared navigation: indicate the current page and its parent menus. */
+#nav li.current > a, #navPanel a[aria-current="page"] {
+	color: #fff;
+	font-weight: 700;
+}

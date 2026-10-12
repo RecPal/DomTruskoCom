@@ -15,12 +15,14 @@
 			var	$this = $(this),
 				indent = Math.max(0, $this.parents('li').length - 1),
 				href = $this.attr('href'),
-				target = $this.attr('target');
+				target = $this.attr('target'),
+				current = $this.attr('aria-current');
 
 			b.push(
 				'<a ' +
 					'class="link depth-' + indent + '"' +
 					( (typeof target !== 'undefined' && target != '') ? ' target="' + target + '"' : '') +
+					( current === 'page' ? ' aria-current="page"' : '') +
 					( (typeof href !== 'undefined' && href != '') ? ' href="' + href + '"' : '') +
 				'>' +
 					'<span class="indent-' + indent + '"></span>' +
