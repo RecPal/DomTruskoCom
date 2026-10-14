@@ -1,4 +1,8 @@
 /* Shared capstone presentation. The portfolio's main styles provide the layout. */
+.capstone-page #main {
+    color: #5b6168;
+}
+
 .capstone-page .capstone-section {
     margin-top: 3em;
     scroll-margin-top: 2em;
@@ -11,8 +15,22 @@
     margin-bottom: 1em;
 }
 
-.writing-prompt {
+.animation-disclaimer {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0 0 2em;
+    padding: 1em 1.25em;
+    border-left: 0.25em solid #164773;
+    border-radius: 0.25em;
+    background: #f3f6f9;
+    color: #484d55;
     font-weight: 600;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+}
+
+.animation-disclaimer p {
+    margin: 0;
 }
 
 .capstone-media {
@@ -64,6 +82,16 @@
     max-width: 32em;
     margin-left: auto;
     margin-right: auto;
+}
+
+.capstone-team-photo {
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.capstone-team-photo figcaption {
+    text-align: center;
 }
 
 .capstone-page #sidebar h2 {
