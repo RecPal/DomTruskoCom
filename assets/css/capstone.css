@@ -1,0 +1,139 @@
+/* Shared capstone presentation. The portfolio's main styles provide the layout. */
+.capstone-page .capstone-section {
+    margin-top: 3em;
+    scroll-margin-top: 2em;
+}
+
+.capstone-page .capstone-section > h3 {
+    font-size: 1.2em;
+    font-style: italic;
+    text-decoration: underline;
+    margin-bottom: 1em;
+}
+
+.writing-prompt {
+    font-weight: 600;
+}
+
+.capstone-media {
+    margin: 0 0 2em;
+}
+
+.capstone-media img,
+.capstone-media video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #d8dce1;
+    border-radius: 0.25em;
+}
+
+.capstone-media video {
+    aspect-ratio: 16 / 9;
+    background: #171c24;
+}
+
+.capstone-media figcaption {
+    font-size: 0.9em;
+    line-height: 1.65;
+    padding-top: 0.75em;
+}
+
+.capstone-media figcaption p {
+    margin-bottom: 0;
+}
+
+.capstone-media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5em;
+}
+
+.capstone-media-grid img {
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+    background: #f3f3f3;
+}
+
+.capstone-scada-grid {
+    display: grid;
+    gap: 1em;
+}
+
+.capstone-schematic {
+    max-width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.capstone-page #sidebar h2 {
+    margin-top: 1.5em;
+}
+
+.capstone-page #sidebar header h2 {
+    margin-top: 0;
+}
+
+.capstone-contents a {
+    display: inline-block;
+    padding: 0.25em 0;
+}
+
+.capstone-page #content > article > header {
+    margin-bottom: 2em;
+}
+
+.capstone-page #footer .actions {
+    text-align: center;
+}
+
+#capstone-feature .row {
+    align-items: center;
+}
+
+#capstone-feature .capstone-feature-image {
+    margin-bottom: 0;
+    border: 0;
+}
+
+#capstone-feature img {
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.25em;
+}
+
+#capstone-feature h2 {
+    font-size: 2em;
+    line-height: 1.35;
+    margin-bottom: 0.75em;
+}
+
+#capstone-feature h2 a {
+    text-decoration: none;
+}
+
+#capstone-feature .capstone-disciplines {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.25em;
+}
+
+#capstone-feature .actions {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 980px) {
+    #capstone-feature .capstone-feature-image {
+        margin-bottom: 1em;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .capstone-media-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #capstone-feature h2 {
+        font-size: 1.5em;
+    }
+}

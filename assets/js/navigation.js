@@ -18,6 +18,7 @@
         <li>
             <a href="#">Projects</a>
             <ul>
+                <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                 <li>
                     <a href="#">Electrical</a>
                     <ul>

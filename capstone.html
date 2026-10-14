@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<!-- Escape Velocity by HTML5 UP; html5up.net/license -->
+<html lang="en">
+<head>
+    <title>IIoT Smart Manufacturing Capstone | Dominick Trusko</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/capstone.css" />
+</head>
+<body class="left-sidebar is-preload capstone-page">
+<div id="page-wrapper">
+    <section id="header" class="wrapper">
+        <div id="logo">
+            <h1><a href="index.html">Dominick Trusko</a></h1>
+            <p>dtrusko@gmail.com | (415) 860-5126</p>
+        </div>
+        <nav id="nav" aria-label="Main navigation"></nav>
+    </section>
+    <main id="main" class="wrapper style2">
+        <div class="title">IIoT Capstone</div>
+        <div class="container">
+            <div class="row gtr-150">
+                <aside id="sidebar" class="col-4 col-12-medium">
+                    <section class="box">
+                        <header><h2><u>Project Overview</u></h2></header>
+                        <h3>2025 – 2026</h3>
+                        <p class="writing-placeholder">
+    In conjunction with the Society of Manufacturing Engineers (SME) and the Manufacturing Education Alliance (MEA), my team's capstone
+    project involved designing and building a fully functional educational manufacturing test cell, providing an expandable platform for
+    teaching automation, controls, and data visualization. The cross-disciplinary team collaborated to deliver a complete system, including
+    robotic and conveyor operations, PLC programming, SCADA interfaces, SQL database integration, and animated visualizations. 
+    The project culminated in a comprehensive handoff to the partner organizations, ensuring that the test cell can be reproduced and utilized 
+    for educational purposes in trade schools and technical programs. 
+</p>
+                        <h2>Participants</h2>
+                        <p><strong>Dominick Trusko</strong><br />Controls / PLC · SCADA / SQL · Animation</p>
+                        <p>Arick Nitzsche<br />Zack Okun<br />Kirk Volin<br />Harrison LaBell<br />Eli Greetis</p>
+                        <h2>Project Type</h2>
+                        <p>University Capstone · EGR 401 / 402<br />Arizona State University Polytechnic</p>
+                        <h2>Industry Partners</h2>
+                        <p>Society of Manufacturing Engineers (SME)<br />Manufacturing Education Alliance (MEA)</p>
+                        <p class="writing-placeholder">
+    <span class="writing-prompt">
+        September 2025 – May 2026
+    </span>
+    Thanks to funding and supplies from SME and MEA, with additional hardware contributions from Epson, Universal Robots, and other local manufacturers.
+</p>
+                    </section>
+                    <nav class="box capstone-contents" aria-label="Capstone sections">
+                        <header><h2>Project Sections</h2></header>
+                        <ul class="style3"><li><a href="#problem">The Problem</a></li><li><a href="#design">Design Considerations</a></li><li><a href="#controls">Electrical Design and PLC Programming</a></li><li><a href="#integration">Offline System Integration</a></li><li><a href="#visualization">SCADA and SQL Data</a></li><li><a href="#animation">Animation and Communication</a></li><li><a href="#validation">Final Build and Testing</a></li><li><a href="#documentation">Documentation and Handoff</a></li><li><a href="#post-mortem">Post-Mortem</a></li></ul>
+                    </nav>
+                    <section class="box">
+                        <header><h2>Software Used</h2></header>
+                        <ul class="style3"><li>Studio 5000 / View Designer</li><li>Ignition SCADA</li><li>SQL Database</li><li>Blender / Flamenco</li><li>DaVinci Resolve</li><li>Automation Studio</li></ul>
+                    </section>
+                </aside>
+                <div class="col-8 col-12-medium imp-medium">
+                    <div id="content">
+                        <article class="box post">
+                            <header class="style1">
+                                <h2>Investigating IIoT Components to Enable Smart Manufacturing</h2>
+                                <p>EGR 401 / 402 · Arizona State University · Team 35</p>
+                            </header>
+                            <figure class="capstone-media"><video controls playsinline preload="none" poster="images/Capstone/animation-overview.webp" aria-label="Edited animation of the completed manufacturing test cell"><source src="assets/videos/Capstone/MEA_2ndPass-web.mp4" type="video/mp4" /><a href="assets/videos/Capstone/MEA_2ndPass-web.mp4">Download this animation</a></video><figcaption><p class="writing-placeholder">
+    <span class="writing-prompt">
+        Promotion animation, animated in Blender and edited in Davinci Resolve, showing the complete manufacturing test cell and its sequential operation. All animations were created without AI assistance by myself.
+    </span>
+</p></figcaption></figure>
+<section id="problem" class="capstone-section">
+<h3>The Problem</h3>
+<p class="writing-placeholder">
+    In an effort to reshore American manufacturing, the country is desperately in need of automation specialists. As it stands, the United States is facing a shortage of skilled workers in the manufacturing sector, and with the simplification of manufacturing automation, the demands
+    of the industry would be better reflected through a two-year trade-school course. The Society of Manufacturing Engineers (SME) and the Manufacturing Education Alliance (MEA) recognized this need and sought to create an educational manufacturing test cell that could be reproduced 
+    and distributed to schools. The goal was to provide students with hands-on experience in automation, controls, and data visualization, preparing them for careers in the industry. To do this, our team designed the extensive test cell demonstrating a series of sensors and actuators,
+    driven through a series of programmable logic controllers, visualized through a SCADA dashboard (Ignition), along with extensive written documentation and animated visualizations.
+</p>
+</section>
+
+<section id="design" class="capstone-section">
+<h3>Design Considerations</h3>
+<p class="writing-placeholder">
+    Throughout the project, the team faced numerous challenges. Primarily, the necessity for specific hardware integration, which was thoughtfully provided by both our sponsors and local manufacturers.
+    This required the team to design around adaptability, as the donated equipment would often change as avaiability shifted, and new groups would come forward to provide hardware. Throughout this process,
+    the team became accostomed to the iterative nature of the design, and we were able to adapt to the changing requirements while still maintaining a cohesive vision for the final product. This involved 
+    a lot of collaboration with the hardware teams to ensure that the existing designs were compatible with the new equipment, and that all hardware could properly report to the SCADA dashboard. To ensure the
+    final design was still modifyable, the team created a series of educational documents explaining the design decisions and how to modify the system for future use.
+</p><figure class="capstone-media "><a href="images/Capstone/cell-render.webp"><img src="images/Capstone/cell-render.webp" alt="Rendered layout of the manufacturing test cell" loading="lazy" width="1000" height="1000" /></a><figcaption><p class="writing-placeholder">
+    The final test cell involved a series of steps. First, a cube enters the system for identification. A pnumatic pick and place machine lifts it to the conveyor, where it is transported along the conveyor to the SCARA station. The SCARA lifts the cube
+    onto a parallel conveyor, where a color sensor identifies the cube's color. The cube is then transported to the UR3 station, where the PLC reports what open pallet and position the cube should be placed in. Once a pallet is filled, the PLC reports
+    to the turntable, which rotates the pallet to the UR5 station, where the robot lifts the sorted pallet and places it onto a separate conveyor for removal from the system. The UR5 then reloads an empty pallet back into that position, reporting it to the
+    PLC to ensure the spots are available for future cube placement. The systems original design was demonstrated through a series of animations, which allowed the team to visualize the final product, as well as provide local manufacturers with a design plan
+    to encourage donation of hardware.
+</p></figcaption></figure>
+</section>
+
+<section id="controls" class="capstone-section">
+<!-- Suggested final prose volume: approximately 180 words, excluding captions. -->
+<h3>Electrical Design and PLC Programming</h3>
+<p class="writing-placeholder">
+    The control panel design was a critical aspect of the project, as it was designed around hardware expansion and modularity. Since the final panels are being produced by an external systems integrator, fabrication friction was key. 
+    From my experience working as a control panel assembler, then designer, all electrical diagrams were designed around manufacturability, as well as ease of use for the operators. All PLCs used in this project were Allen Bradley, so it
+    necessitated the use of Studio 5000 for programming and HMI design. The PLCs worked together to control the entire system, with a singular master PLC coordinating the operations of the other stations. The Universal Robots were programmed
+    internal to their own controllers, while communication between the PLCs and robots were handled through Ethernet/IP. All PLCs reported back to the Windows computer that drove the SCADA dashboard utilizing Ignition.
+</p><div class="capstone-media-grid"><figure class="capstone-media "><a href="images/Capstone/console_ui.webp"><img src="images/Capstone/console_ui.webp" alt="Front of the operator console with touchscreen, indicator lamps, and pushbuttons" loading="lazy" width="901" height="1200" /></a><figcaption><p class="writing-placeholder">
+    <span class="writing-prompt">
+        The final control system featured four lights with corresponding buttons, as well as a touchscreen. These buttons are designed to be reprogrammed to meet the requirements of the classroom, with the touchscreen providing additional controls
+        for driving the entire test cell together. The lights were included to teach binary feedback, with the buttons providing a simple interface to allow students to learn how to integrate binary inputs into the system. The touchscreen also allowed for
+        dynamic interfaces.
+    </span>
+</p></figcaption></figure><figure class="capstone-media "><a href="images/Capstone/console_plc.webp"><img src="images/Capstone/console_plc.webp" alt="Control console interior with programmable controller, terminals, and wiring" loading="lazy" width="901" height="1200" /></a><figcaption><p class="writing-placeholder">
+    <span class="writing-prompt">
+        The control panel was designed to be modular, but rapid to manufacture. It featured a single Allen Bradley PLC, with support for Ethernet/IP communication for communicating with the other PLCs in the system. This makes each module plug-and-play,
+        allowing for easy replacement of the individual components in case of hardware failure (Which is expected in a classroom environment).
+    </span>
+</p></figcaption></figure></div><figure class="capstone-media"><video controls playsinline preload="none" poster="images/Capstone/ur-gripper.webp" aria-label="Animation of the UR robot gripper station"><source src="assets/videos/Capstone/PO_URGripper-web.mp4" type="video/mp4" /><a href="assets/videos/Capstone/PO_URGripper-web.mp4">Download this animation</a></video><figcaption><p class="writing-placeholder">
+    <span class="writing-prompt">
+        The robots all used preprogrammed movements, with the exception of the pallet loading robots, which were given pre-determined positions to place the cubes based on input, with the other axis controlled by the turntable. All programming was done within 
+        the UR programming interface, and controlled through Ethernet/IP start/stop commands, as well as the index of the pallet position to place the cube.
+    </span>
+</p></figcaption></figure>
+</section>
+
+<section id="integration" class="capstone-section">
+<h3>Offline System Integration</h3>
+<p class="writing-placeholder">
+    The largest issue our team faced was the integration of the various pieces of donated equipment, with much of it designed to only operate within its own ecosystem. This required a lot of research and coordination with manufacturers, as well
+    as the programming team at Ignition to ensure we could take in and display all relevant data. Through various workarounds and translation layers, the team managed to integrate all of the provided equipment, and was able to share our modifications
+    with the companies to ensure that future iterations of the hardware would could be more easily integrated into future systems. A major part of this integration was the creation of tools designed to spoof the various networked components to allow
+    the hardware to be tested without the need for their individual communication hubs, allowing the team to test the entire system without the need for an internet connection. This was a major requirement from our sponsors, as to protect the intellectual
+    property, and to ensure that the workarounds would not be used to compromise the security of the various systems.
+</p>
+</section>
+
+<section id="visualization" class="capstone-section">
+<h3>SCADA Design and SQL Database Setup</h3>
+<p class="writing-placeholder">
+    The design of the SCADA dashboard was a critical aspect of the project, as it provides the user with a visual representation of the entire system. Due to the nature of the system as a training
+    cell, we elected to ditch the "Pure functionality" approach to SCADA design, instead focusing on creative visualizations that can keep students engaged, and provide an easier diagnostics platform
+    for the students. A traditional SCADA dashboard would've presented more total data, but the team felt that it would be overwhelming to students, who would not understand the additional information, 
+    so minimizing the on-screen content in favor of readability was a priority. This design decision was made in collaboration with the SCADA and Educational team, with all graphics being produced in
+    Affinity Designer or Blender, then imported into Ignition to use for the final dashboard.
+</p><div class="capstone-scada-grid"><figure class="capstone-media "><a href="images/Capstone/scada-station-1.webp"><img src="images/Capstone/scada-station-1.webp" alt="SCADA screen for station 1" loading="lazy" width="1600" height="900" /></a><figcaption><p class="writing-placeholder">
+    Screenshot from the SCADA dashboard showing the first station, providing diagnostics information for the Pnumatic Pick and Place machine, as well as the conveyor.
+</p></figcaption></figure><figure class="capstone-media "><a href="images/Capstone/scada-station-4.webp"><img src="images/Capstone/scada-station-4.webp" alt="SCADA screen for station 4" loading="lazy" width="1600" height="900" /></a><figcaption><p class="writing-placeholder">
+    Screenshot from the SCADA dashboard showing the fourth station, providing diagnostics information for the color sensor, as well as the cube color identification.
+</p></figcaption></figure><figure class="capstone-media "><a href="images/Capstone/scada-station-8.webp"><img src="images/Capstone/scada-station-8.webp" alt="SCADA screen for station 8" loading="lazy" width="1600" height="900" /></a><figcaption><p class="writing-placeholder">
+    Screenshot from teh SCADA dashboard showing the final station, providing diagnostics information for the linear smart-motor.
+</p></figcaption></figure></div><figure class="capstone-media"><video controls playsinline preload="none" poster="images/Capstone/scada-station-1.webp" aria-label="Animated SCADA sequence"><source src="assets/videos/Capstone/SCADA-animation-web.mp4" type="video/mp4" /><a href="assets/videos/Capstone/SCADA-animation-web.mp4">Download this animation</a></video><figcaption><p class="writing-placeholder">
+    Demonstration of the SCADA dashboard, emulated, showing the sequential operation of the test cell. This was created to accompany the machine animation, and was not captured from live operation.
+</p></figcaption></figure>
+</section>
+
+<section id="animation" class="capstone-section">
+<!-- Suggested final prose volume: approximately 240 words, excluding captions. -->
+<h3>Animation and Communication</h3>
+<p class="writing-placeholder">
+    <span class="writing-prompt">
+        All animations were produced in Blender, with the final video editing in Davinci Resolve. All animations were produced without AI assistance, and were created to provide a visual
+        representation of the final test cell, used to pitch the project to potential investors, as well as trade-schools looking to purchase one for their own programs.
+    </span>
+    As this project had three distinct components. One being the test-cell itself, the second being he educational content, the the third part being the marketing materials. The test-cell animation was created to provide both a video to show to
+    potential buyers, as well as visuals to use within the educational content. The animation needed to demonstrate each of the test cell functions, as well as phases in-between to demonstrate the entire operation, and what skills can be trained on
+    in an educational setting.
+</p><p class="writing-placeholder">
+    Due to the need for rapid iteration, the animation was created in a modular fashion. Each station was invididuall animated in their own Blender Scene, with the final video being rendered across a series of computers in my house utilizing Flamenco
+    to ensure the fastest render times possible. Hardware changes could be reflected in the animation within a few hours, minimizing the downtime between design changes and the final animation.
+</p><figure class="capstone-media"><video controls playsinline preload="none" poster="images/Capstone/scara.webp" aria-label="Animation of the Epson SCARA station"><source src="assets/videos/Capstone/PO_SCARA-web.mp4" type="video/mp4" /><a href="assets/videos/Capstone/PO_SCARA-web.mp4">Download this animation</a></video><figcaption><p class="writing-placeholder">
+</p></figcaption></figure>
+</section>
+
+<section id="validation" class="capstone-section">
+<h3>Final Build and Testing</h3>
+<p class="writing-placeholder">
+    The final test cell operated as expected. Due to the nature of the project, the final test cell was unable to be transported to the showcase due to the lack of forklift availability. The project sponsor requested the removal
+    of the operational video from this report, but as the animation was designed to demonstrate the final operation, it reflects the final design. The final test cell was handed off to the sponsor following the showcase, along with
+    all required documentation and educational materials. 
+</p>
+</section>
+
+<section id="documentation" class="capstone-section">
+<h3>Documentation and Handoff</h3>
+<p class="writing-placeholder">
+    The documentation, as well as educational materials, were developed alongside the test cell. They were tested by handing the guide, unassisted, to students to see if they were able to assemble and
+    operate the individual stations. Any friction points were noted, and the documentation would be updated to ensure future students would be able to compelete all tasks unassisted from the provided writing.
+    Assembly guides were also produced for each station, allowing the systems integrators to produce additional test-cells for other programs, but due to the modularity of the design, the fabrication information
+    also included the ability to exclude certain stations, or to add additional stations based on the needs of the buyer.
+</p><figure class="capstone-media capstone-schematic"><a href="images/Capstone/console-diagram.webp"><img src="images/Capstone/console-diagram.webp" alt="Electrical diagram of the operator console, power supply, PLC, and front-panel devices" loading="lazy" width="1036" height="1600" /></a><figcaption><p class="writing-placeholder">
+    <span class="writing-prompt">
+        [&quot;Describe this console wiring diagram and my contribution. Explain how another builder would use it, and
+        confirm which design revision it represents.&quot;]
+    </span>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim.
+</p></figcaption></figure><ul class="actions"><li><a href="assets/documents/Capstone/console-design.pdf" class="button style2">View Console Diagram (PDF)</a></li></ul>
+</section>
+
+<section id="post-mortem" class="capstone-section">
+<h3>Post-Mortem</h3>
+<p class="writing-placeholder">
+    Across the thousand or so collective hours spent on this project, the team learned a lot about the necessity of cross-disciplinary collaboration, as well as the importance of 
+    clear communication. Throughout the process, I learned a lot about fields I had not previously been exposed to, such as SCADA design, SQL databases, robotics, and advanced animation principles.
+    The real value came from the ability to work alongside industry professionals both within my field, and from various other talented teams. The steady pace of the project allowed for sufficient time
+    to experiment with various designs, and helped the team conclude that our solution went above and beyond the original requirements, giving us all a great experience to finish our ungraduate education
+    working alongside a team of talented engineers, and providing a valuable resource to the community as a whole.
+</p>
+</section>
+
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section id="footer" class="wrapper">
+        <div class="title">Contact</div>
+        <div class="container">
+            <header class="style1"><h2>Interested in reaching out?</h2></header>
+            <ul class="actions">
+                <li><a href="mailto:dtrusko@gmail.com" class="button style1">Email Me</a></li>
+                <li><a href="https://www.linkedin.com/in/dominick-trusko-90868a256/" class="button style2">LinkedIn</a></li>
+            </ul>
+            <div id="copyright"><ul><li>&copy; DomTrusko.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li></ul></div>
+        </div>
+    </section>
+</div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
