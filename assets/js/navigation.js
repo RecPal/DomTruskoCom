@@ -18,10 +18,10 @@
         <li>
             <a href="#">Projects</a>
             <ul>
-                <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                 <li>
                     <a href="#">Electrical</a>
                     <ul>
+                        <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                         <li><a href="sparkyville.html">Student Power-Generator Testbench</a></li>
                         <!--- <li><a href="#">Mechanical Battery</a></li> -->
                         <!--- <li><a href="#">Crash-Detection Bicycle Helmet</a></li> -->
@@ -33,6 +33,7 @@
                 <li>
                     <a href="#">Mechanical</a>
                     <ul>
+                        <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                         <!---<li><a href="#">Magnetic Mechanical Battery</a></li> -->
                         <!---<li><a href="#">Guitar Game-Controller Modernization</a></li> -->
                         <li><a href="radiationanalysis.html"> Radiological Material Sorting Interface </a>
@@ -42,6 +43,7 @@
                 <li>
                     <a href="#">Computing</a>
                     <ul>
+                        <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                         <li><a href="intothevoid.html">VR Mech-Suit Game</a></li>
                         <li><a href="radiationanalysis.html"> Radiological Material Sorting Interface </a>
                         </li>
@@ -56,6 +58,7 @@
                 <li>
                     <a href="#">3d Graphics</a>
                     <ul>
+                        <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                         <li><a href="intothevoid.html">VR Mech-Suit Game</a></li>
                         <li><a href="radiationanalysis.html"> Radiological Material Sorting Interface </a>
                         </li>
