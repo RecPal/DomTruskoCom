@@ -1,4 +1,24 @@
 /* Shared capstone presentation. The portfolio's main styles provide the layout. */
+/* Keep the original framing and crop 20% from the bottom of the photo. */
+.homepage #main .about-me-photo {
+    position: relative;
+    aspect-ratio: 20 / 9;
+    overflow: hidden;
+    border: 1px solid #000;
+    border-radius: 12px;
+}
+
+.homepage #main .about-me-photo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center 28%;
+}
+
 /* Keep the homepage project thumbnails consistent as source images vary. */
 .homepage #highlights .highlight > .image.featured img {
     width: 100%;
