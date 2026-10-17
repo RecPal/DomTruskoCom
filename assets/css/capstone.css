@@ -1,4 +1,13 @@
 /* Shared capstone presentation. The portfolio's main styles provide the layout. */
+/* Keep the homepage project thumbnails consistent as source images vary. */
+.homepage #highlights .highlight > .image.featured img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+}
+
 .capstone-page #main {
     color: #5b6168;
 }

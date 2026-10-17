@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<!-- Escape Velocity by HTML5 UP; html5up.net/license -->
+<html lang="en">
+<head>
+    <title>Neglect Reminder | Dominick Trusko</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Neglect Reminder, an assistive technology project deployed for hospital testing at Barrow Neurological Institute. Software, electrical integration, offline head tracking, and session data logging by Dominick Trusko." />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/capstone.css" />
+    <link rel="stylesheet" href="assets/css/neglectreminder.css" />
+</head>
+<body class="left-sidebar is-preload capstone-page neglect-page">
+<div id="page-wrapper">
+    <section id="header" class="wrapper">
+        <div id="logo">
+            <h1><a href="index.html">Dominick Trusko</a></h1>
+            <p>dtrusko@gmail.com | (415) 860-5126</p>
+        </div>
+        <nav id="nav" aria-label="Main navigation"></nav>
+    </section>
+    <main id="main" class="wrapper style2">
+        <div class="title">Neglect Reminder</div>
+        <div class="container">
+            <div class="row gtr-150">
+                <aside id="sidebar" class="col-4 col-12-medium">
+                    <section class="box">
+                        <header><h2><u>Project Overview</u></h2></header>
+                        <h3>January – May 2026</h3>
+                        <p>A response framework for people with neurological injuries, developed for Barrow Neurological Institute in Phoenix. Patients interact through head movement and visual attention, while the device logs performance for clinician review.</p>
+                        <h2>My Role</h2>
+                        <p><strong>Software / Electrical Lead</strong><br />All programming and electrical work, patient and doctor interviews, and data collection.</p>
+                        <h2>Project Type</h2>
+                        <p>Robotics and Autonomous Systems Design<br />RAS 555 · Arizona State University</p>
+                        <h2>Clinical Partner</h2>
+                        <p>Barrow Neurological Institute<br />Phoenix, Arizona</p>
+                        <h2>Team ReMind</h2>
+                        <p>Kirk Volin<br /><strong>Dominick Trusko</strong><br />Gwen Eging<br />Arick Nitzsche<br />Eli Greetis<br />Enoc Manivasagam</p>
+                    </section>
+                    <section id="files" class="box">
+                        <header><h2>Project Links</h2></header>
+                        <ul class="style2">
+                            <li>
+                                <article class="box post-excerpt">
+                                    <a href="https://1drv.ms/f/c/efb59cc599ce24ef/IgAQSPCbfNoKSph9MDNEvbBVAdJWpm_kDFDChxRJAyodnXg?e=ThfFCA" class="image left" target="_blank" rel="noopener"><img src="images/OnedriveIcon.webp" alt="OneDrive project folder" /></a>
+                                    <h3><a href="https://1drv.ms/f/c/efb59cc599ce24ef/IgAQSPCbfNoKSph9MDNEvbBVAdJWpm_kDFDChxRJAyodnXg?e=ThfFCA" target="_blank" rel="noopener">OneDrive Project Files</a></h3>
+                                    <p>Browse and download the project materials, including CAD files and code</p>
+                                </article>
+                            </li>
+                        </ul>
+                    </section>
+                    <nav class="box capstone-contents" aria-label="Project sections">
+                        <header><h2>Project Sections</h2></header>
+                        <ul class="style3">
+                            <li><a href="#purpose">Designing Around the Patient</a></li>
+                            <li><a href="#contribution">My Contributions</a></li>
+                            <li><a href="#tracking">Offline Facial Tracking</a></li>
+                            <li><a href="#data">Session Data and Clinician Review</a></li>
+                            <li><a href="#hardware">Electrical and Hardware Integration</a></li>
+                            <li><a href="#testing">Hospital Testing</a></li>
+                            <li><a href="#presentation">Final Presentation and Demos</a></li>
+                            <li><a href="#files">Project Files</a></li>
+                        </ul>
+                    </nav>
+                    <section class="box">
+                        <header><h2>Technical Focus</h2></header>
+                        <ul class="style3">
+                            <li>Raspberry Pi 5</li>
+                            <li>MediaPipe BlazeFace</li>
+                            <li>OpenCV / NumPy</li>
+                            <li>Facial pose estimation</li>
+                            <li>Touchscreen interface</li>
+                            <li>CSV session logging</li>
+                        </ul>
+                    </section>
+                </aside>
+                <div class="col-8 col-12-medium imp-medium">
+                    <div id="content">
+                        <article class="box post">
+                            <header class="style1">
+                                <h2>Neglect Reminder</h2>
+                                <p>Head movement and visual attention as a patient response framework</p>
+                            </header>
+                            <div class="neglect-renders">
+                                <figure class="capstone-media">
+                                    <a href="images/NeglectReminder/case-front.webp"><img src="images/NeglectReminder/case-front.webp" alt="Front render of the Neglect Reminder touchscreen and webcam enclosure" width="1920" height="730" fetchpriority="high" /></a>
+                                    <figcaption><p>Neglect Reminder, showing the patient-facing display and webcam.</p></figcaption>
+                                </figure>
+                                <div class="neglect-render-grid">
+                                    <figure class="capstone-media">
+                                        <a href="images/NeglectReminder/case-detail.webp"><img src="images/NeglectReminder/case-detail.webp" alt="Angled render of the rear enclosure with ReMind branding and ventilation" width="1920" height="730" loading="lazy" /></a>
+                                        <figcaption><p>Enclosure detail and ReMind branding.</p></figcaption>
+                                    </figure>
+                                    <figure class="capstone-media">
+                                        <a href="images/NeglectReminder/case-rear.webp"><img src="images/NeglectReminder/case-rear.webp" alt="Rear render of the Neglect Reminder device showing its cooling grille and enclosure" width="1920" height="730" loading="lazy" /></a>
+                                        <figcaption><p>Rear view with cooling and ventilation.</p></figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <ul class="actions neglect-actions">
+                                <li><a href="#presentation" class="button style1">View the Presentation</a></li>
+                                <li><a href="assets/documents/NeglectReminder/Final-Presentation.pptx" class="button style3" download>Download PowerPoint</a></li>
+                            </ul>
+                            <section id="purpose" class="capstone-section">
+                                <h3>Designing Around the Patient</h3>
+                                <p>Neglect Reminder was designed for people with neurological injuries who needed a way to respond without using their hands. The project focused on prompting patients to direct attention toward their affected side, using an interaction that required only head and eye movements.</p>
+                                <p>The device plays a scheduled audio cue and presents a visual task. Head tracking provides the selection input, while identifying the requested symbol requires the patient to look at the display. This lets the system record a response without requiring a button press or touchscreen interaction from the patient.</p>
+                                <p>I conducted patient and doctor interviews and collected data to understand the intended use. Those conversations helped frame the project around patients' movement restrictions and the information clinicians wanted to review.</p>
+                            </section>
+                            <section id="contribution" class="capstone-section">
+                                <h3>My Contributions</h3>
+                                <p>As Software / Electrical Lead, I completed all of the programming and electrical work. That included the facial tracking implementation, the on-screen interaction, configurable settings, and the session logging and export workflow. I also conducted the patient and doctor interviews and handled data collection.</p>
+                                <p>I had very little involvement in the mechanical design. The enclosure, mounting arrangement, and CAD shown in the presentation represent the team's mechanical work.</p>
+                                <p>These two slides demonstrate my facial tracking implementation, from the patient interaction interface to the pose estimation and tuning controls. The original animated demos play directly below.</p>
+                                <div class="neglect-viewer neglect-inline-demo" role="region" aria-label="Facial Tracking Implementation demo">
+<div class="neglect-toolbar" hidden><button type="button" data-inline-motion aria-pressed="true">Pause demos</button><button type="button" data-inline-fullscreen hidden>Fullscreen</button></div>
+<p class="neglect-sr-only" data-inline-status aria-live="polite"></p>
+<figure class="neglect-slide" data-title="Facial Tracking Implementation" aria-label="Slide 8 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-08.webp" alt="Facial tracking implementation with two animated interface demonstrations and a CSV example" width="1600" height="900" loading="lazy" />
+<img class="neglect-animation" src="images/NeglectReminder/image19-poster.webp" data-poster="images/NeglectReminder/image19-poster.webp" data-animation="images/NeglectReminder/image19.gif" alt="Animated demonstration of the patient interaction interface" style="left:0.000820%;top:28.545387%;width:37.191612%;height:33.209740%" loading="lazy" />
+<img class="neglect-animation" src="images/NeglectReminder/image25-poster.webp" data-poster="images/NeglectReminder/image25-poster.webp" data-animation="images/NeglectReminder/image25.gif" alt="Animated demonstration of the patient interaction interface" style="left:0.000820%;top:64.085253%;width:37.191568%;height:33.207232%" loading="lazy" />
+</div><figcaption>8 / 12 · Facial Tracking Implementation</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Facial Tracking Implementation</p>
+<p>Overview</p>
+<p>Head tracking is used as a remote selection method to prevent the user from having to physically interact with the device, while pupil attention is mandated by identification and selection of symbols.</p>
+<p>Facial detection is handled offline using Google Mediapipe Blazeface, analyzing 6 tracking points to determine facial orientation</p>
+<p>Interaction</p>
+<p>Interactions can be scheduled by the physician at determined intervals, as well as exported to the selected medium.</p>
+<p>Visualization</p>
+<p>Export</p>
+<p>Data is exported as a CSV, either overwriting existing data or appending the list. Drive data is not read, and files can only be added to the drive’s root with the name ReMindLog.csv</p>
+<p>The interface is drawn using OpenCV with some custom functions to produce bevelled edges</p>
+<p>Icons are parsed from a folder called “Images” in the project root. To add new icons you just add the image to that folder and rename it as an identifier, on startup the program will cache any images in that folder.</p>
+<p>Icons are from https://game-icons.net/, but supports dynamic content scaling and chroma masking for backgrounds.</p>
+</details></figure>
+</div>
+<div class="neglect-viewer neglect-inline-demo" role="region" aria-label="Facial Tracking Specifics demo">
+<div class="neglect-toolbar" hidden><button type="button" data-inline-motion aria-pressed="true">Pause demos</button><button type="button" data-inline-fullscreen hidden>Fullscreen</button></div>
+<p class="neglect-sr-only" data-inline-status aria-live="polite"></p>
+<figure class="neglect-slide" data-title="Facial Tracking Specifics" aria-label="Slide 9 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-09.webp" alt="Facial pose estimation explanation with an animated tracking demonstration and settings interface" width="1600" height="900" loading="lazy" />
+<img class="neglect-animation" src="images/NeglectReminder/image23-poster.webp" data-poster="images/NeglectReminder/image23-poster.webp" data-animation="images/NeglectReminder/image23.gif" alt="Animated demonstration of facial pose tracking" style="left:33.020833%;top:59.632040%;width:40.285696%;height:38.739205%" loading="lazy" />
+</div><figcaption>9 / 12 · Facial Tracking Specifics</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Facial Tracking Specifics</p>
+<p>&gt; A “facial plane” is generated using the tracking points and cv2’s solvePnP function (Perspective-n-Point). A Rodrigues Transformation is used to convert it to a 3x3 rotational matrix. This matrix represents the facial forward as a 3d-vector.</p>
+<p>&gt; By taking the dot product of this vector with the forward facing vector (0,0,1), you get a value from (-1)-(1). At -1, the user is pointing towards the camera, at 0, they are perpendicular. At -0.3 the side selection is determined.</p>
+<p>&gt; All relevant tuning parameters are exposed in the Debug/Settings menu. These settings are saved on “Apply” and loaded during startup.</p>
+<p>&gt; Values are interpolated over a set interval to account for tracking jitter which allows the device to operate in extremely poor lighting conditions. Outliers are excluded</p>
+<p>cv2.solvePnP</p>
+<p>cv2.Rodrigues—---------------(0, 0.5, -0.5) = A</p>
+<p>np.dot(A,B)</p>
+<p>—--------------</p>
+<p>-0.4</p>
+<p>A</p>
+<p>A</p>
+<p>B</p>
+</details></figure>
+</div>
+                            </section>
+                            <section id="tracking" class="capstone-section">
+                                <h3>Offline Facial Tracking</h3>
+                                <p>The system processes webcam images locally with MediaPipe BlazeFace. Six facial landmarks feed OpenCV's <code>solvePnP</code> function to estimate facial pose. A Rodrigues transformation converts the pose to a rotation matrix, and a dot product compares the resulting forward vector with a reference direction to determine a side selection.</p>
+                                <p>To stabilize input, the implementation interpolates tracking values over a configurable interval and excludes outliers. A debug/settings menu exposes the tuning parameters, with settings saved on Apply and restored at startup.</p>
+                                <p>The interface is drawn in OpenCV, including custom beveled controls. It loads task icons from an Images folder at startup and supports scaling and background masking. The interaction uses head orientation for selection; it does not directly measure pupil gaze.</p>
+                                <p><a href="#presentation" data-show-slide="8">See the implementation demos on slide 8</a> or <a href="#presentation" data-show-slide="9">the facial tracking demonstration on slide 9</a>.</p>
+                            </section>
+                            <section id="data" class="capstone-section">
+                                <h3>Session Data and Clinician Review</h3>
+                                <p>The program loads patient settings and previous session data, then waits for a scheduled interaction. When an alert triggers, it enables the camera, displays the task, and plays the audio cue. It logs time to target, time off target, and the session number and time.</p>
+                                <p>These records export to <code>ReMindLog.csv</code>, either appending to an existing log or replacing it. The purpose was to give doctors data they could chart into performance statistics and review over time for signs of improvement.</p>
+                                <p>The device was designed to operate offline and process camera images without storing them. Data transfer uses a manual USB export rather than a cloud connection.</p>
+                            </section>
+                            <section id="hardware" class="capstone-section">
+                                <h3>Electrical and Hardware Integration</h3>
+                                <p>The standalone unit combines a Raspberry Pi 5 with an Inland C840 webcam and a Roadom 10-inch touchscreen. A Noctua NF-A4x10 5V PWM fan provides cooling, and a case-mounted USB-A port supports data export.</p>
+                                <p>My electrical work supported the complete device, while the software brought the camera, display, audio prompts, and logging together into the patient interaction workflow. The team's 3D-printed enclosure and VESA-compatible mounting arrangement packaged the system for its intended hospital setting.</p>
+                            </section>
+                            <section id="testing" class="capstone-section">
+                                <h3>Hospital Testing</h3>
+                                <p>The final project was deployed at Barrow Neurological Institute for testing. It brought the response framework and data collection workflow into the environment for which they were designed.</p>
+                                <p>The final presentation documents the prototype's limitations, including tracking at extreme patient angles or with significant facial asymmetry, the need for outlet power, and manual data export. It also identifies future work such as battery power, alternative mounting options, and a dedicated eye tracker.</p>
+                            </section>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <section id="presentation" class="neglect-presentation capstone-section" aria-labelledby="presentation-heading">
+                <header class="style1">
+                    <h2 id="presentation-heading">Final Presentation</h2>
+                    <p>All 12 presented slides, including the original animated demonstrations</p>
+                </header>
+                <p>The April 28, 2026 presentation documents the prototype, its demonstrations, and the team's proposed future work. Use the slide controls to explore, or expand the slide text for a readable transcript.</p>
+                <div id="neglect-viewer" class="neglect-viewer" role="region" aria-label="Neglect Reminder final presentation">
+<div class="neglect-toolbar" hidden><button type="button" data-previous aria-label="Previous slide">Previous</button><label class="neglect-sr-only" for="neglect-slide-select">Choose a slide</label><select id="neglect-slide-select" aria-controls="neglect-slides">
+<option value="0">1. Neglect Reminder / Team ReMind</option>
+<option value="1">2. Background – Hemiparesis</option>
+<option value="2">3. Related Work</option>
+<option value="3">4. Proposed Solution</option>
+<option value="4">5. Hardware Overview</option>
+<option value="5">6. CAD Design</option>
+<option value="6">7. Software Overview</option>
+<option value="7">8. Facial Tracking Implementation</option>
+<option value="8">9. Facial Tracking Specifics</option>
+<option value="9">10. Monitor Mounting</option>
+<option value="10">11. Limitations</option>
+<option value="11">12. Future Work</option>
+</select><button type="button" data-next aria-label="Next slide">Next</button><button type="button" data-motion aria-pressed="true" hidden>Pause demos</button><button type="button" data-fullscreen hidden>Fullscreen</button></div>
+<p class="neglect-sr-only" data-status aria-live="polite" aria-atomic="true"></p>
+<div id="neglect-slides">
+<figure class="neglect-slide" data-title="Neglect Reminder / Team ReMind" aria-label="Slide 1 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-01.webp" alt="Cover with Barrow Neurological Institute and ReMind branding and the six team members" width="1600" height="900" loading="lazy" />
+</div><figcaption>1 / 12 · Neglect Reminder / Team ReMind</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>4/28/2026</p>
+<p>RAS 555</p>
+<p>Neglect Reminder</p>
+<p>TeamKirk Volin</p>
+<p>Dominick Trusko</p>
+<p>Gwen Eging</p>
+<p>Arick Nitzsche</p>
+<p>Eli Greetis</p>
+<p>Enoc Manivasagam</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Background – Hemiparesis" aria-label="Slide 2 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-02.webp" alt="Original project background slide on neurological injury and rehabilitation" width="1600" height="900" loading="lazy" />
+</div><figcaption>2 / 12 · Background – Hemiparesis</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Background - Hemiparesis</p>
+<p>It is a symptom of neurological damage.</p>
+<p>Usually caused by stroke or a traumatic brain injury.</p>
+<p>The first 2-3 weeks after injury are the most important for recovery</p>
+<p>Effects Memory, dexterity, &amp; strength.</p>
+<p>One sided weakness, appear as:</p>
+<p>Facial drooping</p>
+<p>Balance issues</p>
+<p>Forgetting one side exists</p>
+<p>Head and neck recovery and stability is necessary before treatment can move on to limbs.</p>
+<p>Early on rehab is focusing on reconnecting the two sides of the brain.</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Related Work" aria-label="Slide 3 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-03.webp" alt="Original related work slide comparing AR and Tobii-based devices" width="1600" height="900" loading="lazy" />
+</div><figcaption>3 / 12 · Related Work</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Related Work</p>
+<p>AR Simulation →</p>
+<p>Never commercially released, only a study was done.</p>
+<p>Bulky</p>
+<p>Formatted to work on the Microsoft HoloLens 2 (~$4,396.73)</p>
+<p>1.</p>
+<p>2.</p>
+<p>Tobii Centered Devices →</p>
+<p>Expensive</p>
+<p>Provides various options for configuration</p>
+<p>Costs span $299 for the gaming solutions to $4,500 for the medical assistive devices.</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Proposed Solution" aria-label="Slide 4 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-04.webp" alt="Proposed solution: timed audio alerts, visual display, facial tracking, and offline operation" width="1600" height="900" loading="lazy" />
+</div><figcaption>4 / 12 · Proposed Solution</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Neglect Reminder System with Facial Tracking</p>
+<p>Proposed Solution</p>
+<p>Timed Audio Alerts</p>
+<p>Allows therapists to schedule routine alerts</p>
+<p>Alerts remind the patient to look towards the device</p>
+<p>Routine, audible cues keep patients engaged in therapy mostments</p>
+<p>Visual Display</p>
+<p>The patient is instructed to look at a specific object on the screen</p>
+<p>Provides visual feedback and rewards the patient for interacting</p>
+<p>Facial Tracking</p>
+<p>The heart of the system</p>
+<p>Software processes the image from a webcam to determine where the patient it looking to determine success rate</p>
+<p>Logs statistical data for therapists to review</p>
+<p>Isolated from Internet</p>
+<p>The device is standalone with no internet or bluetooth capabilities</p>
+<p>Maintains patient privacy</p>
+<p>Does not store image data</p>
+<p>Meets HIPAA standards</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Hardware Overview" aria-label="Slide 5 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-05.webp" alt="Hardware list: Raspberry Pi, webcam, touchscreen, cooling, enclosure, and USB port" width="1600" height="900" loading="lazy" />
+</div><figcaption>5 / 12 · Hardware Overview</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Hardware Overview</p>
+<p>Computer  (01)</p>
+<p>Webcam  (02)</p>
+<p>Touchscreen   (03)</p>
+<p>Cooling   (04)</p>
+<p>Case   (05)</p>
+<p>I/O   (06)</p>
+<p>Raspberry Pi 5</p>
+<p>Inland C840</p>
+<p>Roadom 10” Touchscreen</p>
+<p>Noctua NF-A4x10 5V PWM</p>
+<p>Modelled in Fusion 360, 3D Printed, VESA compatible</p>
+<p>Case mounted USB-A port</p>
+</details></figure>
+<figure class="neglect-slide" data-title="CAD Design" aria-label="Slide 6 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-06.webp" alt="Three CAD views of the complete device and its internal components" width="1600" height="900" loading="lazy" />
+</div><figcaption>6 / 12 · CAD Design</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>CAD Design</p>
+<p>Modelled in Fusion 360</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Software Overview" aria-label="Slide 7 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-07.webp" alt="Program flow from initialization and patient settings through scheduled alerts, logging, and CSV export" width="1600" height="900" loading="lazy" />
+</div><figcaption>7 / 12 · Software Overview</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Software Overview</p>
+<p>Initialization   (01)</p>
+<p>Load Config  (02)</p>
+<p>Disable Cam   (03)</p>
+<p>Trigger Alert   (04)</p>
+<p>Log Stats   (05)</p>
+<p>Export Data   (06)</p>
+<p>Verify presence of required files, cache transform data, test camera + Blaze Face</p>
+<p>Load patient settings and existing save data from previous session</p>
+<p>Disable non-critical hardware and sleep until trigger is activated</p>
+<p>Enable camera and show alert information + play audio cue</p>
+<p>Cache information about time to target, time off target, and session number/time</p>
+<p>Export cached data to CSV or append existing data log</p>
+<p>Setup</p>
+<p>Loop</p>
+<p>Export</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Facial Tracking Implementation" aria-label="Slide 8 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-08.webp" alt="Facial tracking implementation with two animated interface demonstrations and a CSV example" width="1600" height="900" loading="lazy" />
+<img class="neglect-animation" src="images/NeglectReminder/image19-poster.webp" data-poster="images/NeglectReminder/image19-poster.webp" data-animation="images/NeglectReminder/image19.gif" alt="Animated demonstration of the patient interaction interface" style="left:0.000820%;top:28.545387%;width:37.191612%;height:33.209740%" loading="lazy" />
+<img class="neglect-animation" src="images/NeglectReminder/image25-poster.webp" data-poster="images/NeglectReminder/image25-poster.webp" data-animation="images/NeglectReminder/image25.gif" alt="Animated demonstration of the patient interaction interface" style="left:0.000820%;top:64.085253%;width:37.191568%;height:33.207232%" loading="lazy" />
+</div><figcaption>8 / 12 · Facial Tracking Implementation</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Facial Tracking Implementation</p>
+<p>Overview</p>
+<p>Head tracking is used as a remote selection method to prevent the user from having to physically interact with the device, while pupil attention is mandated by identification and selection of symbols.</p>
+<p>Facial detection is handled offline using Google Mediapipe Blazeface, analyzing 6 tracking points to determine facial orientation</p>
+<p>Interaction</p>
+<p>Interactions can be scheduled by the physician at determined intervals, as well as exported to the selected medium.</p>
+<p>Visualization</p>
+<p>Export</p>
+<p>Data is exported as a CSV, either overwriting existing data or appending the list. Drive data is not read, and files can only be added to the drive’s root with the name ReMindLog.csv</p>
+<p>The interface is drawn using OpenCV with some custom functions to produce bevelled edges</p>
+<p>Icons are parsed from a folder called “Images” in the project root. To add new icons you just add the image to that folder and rename it as an identifier, on startup the program will cache any images in that folder.</p>
+<p>Icons are from https://game-icons.net/, but supports dynamic content scaling and chroma masking for backgrounds.</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Facial Tracking Specifics" aria-label="Slide 9 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-09.webp" alt="Facial pose estimation explanation with an animated tracking demonstration and settings interface" width="1600" height="900" loading="lazy" />
+<img class="neglect-animation" src="images/NeglectReminder/image23-poster.webp" data-poster="images/NeglectReminder/image23-poster.webp" data-animation="images/NeglectReminder/image23.gif" alt="Animated demonstration of facial pose tracking" style="left:33.020833%;top:59.632040%;width:40.285696%;height:38.739205%" loading="lazy" />
+</div><figcaption>9 / 12 · Facial Tracking Specifics</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Facial Tracking Specifics</p>
+<p>&gt; A “facial plane” is generated using the tracking points and cv2’s solvePnP function (Perspective-n-Point). A Rodrigues Transformation is used to convert it to a 3x3 rotational matrix. This matrix represents the facial forward as a 3d-vector.</p>
+<p>&gt; By taking the dot product of this vector with the forward facing vector (0,0,1), you get a value from (-1)-(1). At -1, the user is pointing towards the camera, at 0, they are perpendicular. At -0.3 the side selection is determined.</p>
+<p>&gt; All relevant tuning parameters are exposed in the Debug/Settings menu. These settings are saved on “Apply” and loaded during startup.</p>
+<p>&gt; Values are interpolated over a set interval to account for tracking jitter which allows the device to operate in extremely poor lighting conditions. Outliers are excluded</p>
+<p>cv2.solvePnP</p>
+<p>cv2.Rodrigues—---------------(0, 0.5, -0.5) = A</p>
+<p>np.dot(A,B)</p>
+<p>—--------------</p>
+<p>-0.4</p>
+<p>A</p>
+<p>A</p>
+<p>B</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Monitor Mounting" aria-label="Slide 10 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-10.webp" alt="Team documentation showing the VESA mount, clamp components, and mounting assembly" width="1600" height="900" loading="lazy" />
+</div><figcaption>10 / 12 · Monitor Mounting</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Date</p>
+<p>Company Name</p>
+<p>Mounting of the device</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Limitations" aria-label="Slide 11 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-11.webp" alt="Original prototype limitations and clinical validation status at presentation time" width="1600" height="900" loading="lazy" />
+</div><figcaption>11 / 12 · Limitations</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Limitations</p>
+<p>The device has not undergone formal clinical trials or FDA clearance, so it cannot yet be used as a diagnostic tool.</p>
+<p>Facial tracking accuracy degrades if the patient is lying at an extreme angle or has significant facial asymmetry from their condition.</p>
+<p>The system requires a power outlet nearby and has no battery backup, limiting placement flexibility in some rooms.</p>
+<p>Session data is exported manually via USB with no automatic cloud sync, which adds a step for clinical staff.</p>
+</details></figure>
+<figure class="neglect-slide" data-title="Future Work" aria-label="Slide 12 of 12"><div class="neglect-slide-image"><img src="images/NeglectReminder/slide-12.webp" alt="Proposed future work: clinical trials, battery, eye tracker, and mounting improvements" width="1600" height="900" loading="lazy" />
+</div><figcaption>12 / 12 · Future Work</figcaption><details class="neglect-transcript"><summary>Read slide text</summary>
+<p>Future Work</p>
+<p>Allowing our industry partner to test the product and give us real use case data.</p>
+<p>Clinical Trials</p>
+<p>A battery would allow for more modularity and freedom of movement.</p>
+<p>Battery</p>
+<p>Integrating Tech.</p>
+<p>Better Mounting</p>
+<p>Exploring other clamping options such as a flexible tripod allowing for a more streamlined mounting process.</p>
+<p>Our industry partner was open to the idea of adding a Tobii eye tracker to improve facial tracking even more.</p>
+</details></figure>
+</div></div>
+                <p class="neglect-download"><a href="assets/documents/NeglectReminder/Final-Presentation.pptx" download>Download the original PowerPoint (28 MB)</a>.</p>
+            </section>
+        </div>
+    </main>
+    <section id="footer" class="wrapper">
+        <div class="title">Contact</div>
+        <div class="container">
+            <header class="style1"><h2>Interested in reaching out?</h2></header>
+            <ul class="actions">
+                <li><a href="mailto:dtrusko@gmail.com" class="button style1">Email Me</a></li>
+                <li><a href="https://www.linkedin.com/in/dominick-trusko-90868a256/" class="button style2">LinkedIn</a></li>
+            </ul>
+            <div id="copyright"><ul><li>&copy; DomTrusko.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li></ul></div>
+        </div>
+    </section>
+</div>
+<dialog id="neglect-lightbox" class="neglect-lightbox" aria-label="Project render viewer">
+    <div class="neglect-lightbox-toolbar">
+        <span data-render-counter aria-live="polite"></span>
+        <button type="button" data-render-close autofocus>Close</button>
+    </div>
+    <figure>
+        <img class="neglect-lightbox-image" alt="" />
+        <figcaption data-render-caption></figcaption>
+    </figure>
+    <div class="neglect-lightbox-controls">
+        <button type="button" data-render-previous>Previous</button>
+        <button type="button" data-render-next>Next</button>
+    </div>
+</dialog>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/navigation.js?v=0f830347cf"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/neglectreminder.js"></script>
+</body>
+</html>

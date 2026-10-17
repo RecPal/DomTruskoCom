@@ -21,6 +21,7 @@
                 <li>
                     <a href="#">Electrical</a>
                     <ul>
+                        <li><a href="neglectreminder.html">Neglect Reminder</a></li>
                         <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                         <li><a href="sparkyville.html">Student Power-Generator Testbench</a></li>
                         <li><a href="classroomquiz.html">Tactile Classroom Quiz System</a></li>
@@ -45,6 +46,7 @@
                 <li>
                     <a href="#">Computing</a>
                     <ul>
+                        <li><a href="neglectreminder.html">Neglect Reminder</a></li>
                         <li><a href="capstone.html">IIoT Smart Manufacturing Capstone</a></li>
                         <li><a href="intothevoid.html">VR Mech-Suit Game</a></li>
                         <li><a href="radiationanalysis.html"> Radiological Material Sorting Interface </a>
