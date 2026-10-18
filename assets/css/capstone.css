@@ -20,12 +20,99 @@
 }
 
 /* Keep the homepage project thumbnails consistent as source images vary. */
-.homepage #highlights .highlight > .image.featured img {
+.homepage #highlights .project-card > .image.featured img {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     object-position: center;
+}
+
+/* Match every selection frame to the tallest tile, including across rows. */
+.homepage #highlights .row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+}
+
+.homepage #highlights .row > div {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+}
+
+.homepage #highlights .row > div:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 50%;
+}
+
+.homepage #highlights .highlight {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Reveal a beveled selection frame without changing the project grid. */
+.homepage #highlights .project-card {
+    display: block;
+    flex: 1;
+    position: relative;
+    isolation: isolate;
+    color: inherit;
+    text-decoration: none;
+}
+
+.homepage #highlights .project-card::before {
+    content: "";
+    position: absolute;
+    inset: -0.75em;
+    z-index: -1;
+    border: 2px solid;
+    border-color: #969ba2 #3d4249 #30343a #858b93;
+    border-radius: 0.3em;
+    background: linear-gradient(145deg, #626871, #484e56);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.2),
+        0 5px 12px rgba(30, 34, 40, 0.2);
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
+.homepage #highlights .project-card h3 {
+    transition: color 180ms ease;
+}
+
+.homepage #highlights .project-card p {
+    margin-bottom: 0;
+}
+
+.homepage #highlights .project-card:hover,
+.homepage #highlights .project-card:focus-visible {
+    color: #f5f6f7;
+}
+
+.homepage #highlights .project-card:hover h3,
+.homepage #highlights .project-card:focus-visible h3 {
+    color: #fff;
+}
+
+.homepage #highlights .project-card:hover::before,
+.homepage #highlights .project-card:focus-visible::before {
+    opacity: 1;
+}
+
+.homepage #highlights .project-card:focus-visible {
+    outline: 2px solid #1f6bae;
+    outline-offset: 0.9em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .homepage #highlights .project-card,
+    .homepage #highlights .project-card::before,
+    .homepage #highlights .project-card h3 {
+        transition: none;
+    }
 }
 
 .capstone-page #main {
@@ -180,6 +267,15 @@
 }
 
 @media screen and (max-width: 980px) {
+    .homepage #highlights .row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .homepage #highlights .row > div:last-child:nth-child(odd) {
+        grid-column: auto;
+        width: 100%;
+    }
+
     #capstone-feature .capstone-feature-image {
         margin-bottom: 1em;
     }
