@@ -1,0 +1,209 @@
+/* Rich desktop dropdown; mobile uses the same project links in the side panel. */
+#nav {
+    z-index: 100;
+}
+
+#nav > ul {
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+#nav .project-categories,
+#nav .project-previews {
+    list-style: none;
+}
+
+#nav [hidden] {
+    display: none !important;
+}
+
+#nav > ul > li > .projects-trigger::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 0 3px 10px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(45deg);
+}
+
+#nav > ul > li > .project-categories {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: min(960px, calc(100vw - 48px));
+    height: var(--project-menu-height, 660px);
+    margin: -1px 0 0;
+    padding: 18px 0;
+    overflow: hidden;
+    border: 1px solid #434b58;
+    border-radius: 8px;
+    background: #282f3c;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    line-height: 1.45;
+    letter-spacing: 0;
+}
+
+#nav .project-category {
+    width: 180px;
+    margin: 0;
+    padding: 0 12px;
+}
+
+#nav .project-category-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 12px;
+    border-radius: 4px;
+    color: #dce2ea;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#nav .project-category-trigger::after {
+    content: '\203a';
+    color: #9aaec1;
+    font-size: 20px;
+    line-height: 1;
+}
+
+#nav .is-selected > .project-category-trigger {
+    background: #3c4858;
+    color: #fff;
+}
+
+#nav .project-category-trigger:hover {
+    color: #fff;
+    background: #354050;
+}
+
+#nav .project-previews {
+    position: absolute;
+    inset: 0 0 0 180px;
+    margin: 0;
+    padding: 0 24px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #93a8b6 #f5f7fa;
+    background: #fff;
+    color: #303844;
+}
+
+#nav .project-previews > li {
+    padding: 0;
+    border-bottom: 1px solid #d3e1e8;
+}
+
+#nav .project-previews > li:last-child {
+    border-bottom: 0;
+}
+
+#nav .project-preview {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    align-items: center;
+    gap: 22px;
+    padding: 20px 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+#nav .project-preview-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid #dce3e9;
+    border-radius: 4px;
+    background: #f1f4f7;
+}
+
+#nav .project-preview-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#nav .project-preview-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    min-width: 0;
+}
+
+#nav .project-preview-title {
+    color: #303844;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.18;
+    text-wrap: balance;
+}
+
+#nav .project-preview-description {
+    color: #5c6570;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.45;
+    text-wrap: balance;
+}
+
+#nav .project-preview-client {
+    color: #22637b;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-wrap: balance;
+}
+
+#nav .project-preview-for {
+    color: #66727d;
+    font-weight: 400;
+}
+
+#nav .project-preview:hover .project-preview-title,
+#nav .project-preview:focus-visible .project-preview-title {
+    color: #22637b;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+#nav .project-preview:hover .project-preview-image {
+    border-color: #4b839a;
+}
+
+#nav a:focus-visible {
+    outline: 2px solid #80c4dc;
+    outline-offset: 3px;
+}
+
+#nav .project-preview:focus-visible {
+    outline-offset: -3px;
+}
+
+/* Long project names should remain readable in the existing mobile navigation. */
+@media screen and (max-width: 980px) {
+    #navPanel .link.depth-2 {
+        height: auto;
+        min-height: 44px;
+        padding: 12px 0 12px 1.5em;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        line-height: 1.5;
+        text-wrap: balance;
+    }
+
+    #navPanel .depth-2 .indent-2 {
+        display: none;
+    }
+}

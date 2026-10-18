@@ -24,13 +24,7 @@
 			}, 100);
 		});
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			noOpenerFade: true,
-			alignment: 'center',
-			detach: false
-		});
+	// Desktop project previews are managed by navigation.js.
 
 	// Nav.
 
