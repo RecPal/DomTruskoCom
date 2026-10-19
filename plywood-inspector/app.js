@@ -80,7 +80,7 @@ function renderSetup() {
   $("calibration-status").textContent = !state.calibration ? "Mount needs calibration" : valid ? "Calibration saved on this browser" : "Thickness changed · recalibrate";
   $("open-calibration").textContent = state.calibration ? "Recalibrate →" : "Set up →";
   $("calibration-thickness").textContent = `Calibration plane: ${num(thickness(), 2)} mm plywood top face. Change thickness in Setup if needed.`;
-  $("capture-help").textContent = fixed ? "Use the same mount, camera, orientation, resolution, and 1× zoom. Tap inside the plywood to select it." : "Hold the phone roughly parallel to the top face. Keep the whole part visible. Tap inside the plywood to select it.";
+  $("capture-help").textContent = fixed ? "Use the same mount, camera, orientation, resolution, and calibrated zoom. Tap inside the plywood to select it." : "Hold the phone roughly parallel to the top face. Keep the whole part visible. Tap inside the plywood to select it.";
 }
 
 function renderTarget() {
@@ -237,7 +237,7 @@ async function saveCalibration() {
     if(!$("plane-confirmed").checked)throw new Error("Confirm the measured rectangle is at the plywood’s top-face height.");
     const factor=$("calibration-unit").value==="in"?25.4:1;
     const data=await api("calibrate",{corners:state.corners,width_mm:Number($("rectangle-width").value)*factor,height_mm:Number($("rectangle-height").value)*factor,thickness_mm:thickness(),image_size:state.calibrationPhoto.imageSize,source_size:state.calibrationPhoto.sourceSize});
-    state.calibration={...data.calibration,capture_source:state.calibrationPhoto.captureSource||"photo"};saveLocal("plywood.pages.calibration.v1",state.calibration);
+    state.calibration={...data.calibration,capture_source:state.calibrationPhoto.captureSource||"photo",zoom_snapshot:state.calibrationPhoto.zoomSnapshot||null};saveLocal("plywood.pages.calibration.v1",state.calibration);
     $("setup-unchanged").checked=false;renderSetup();discardResult();$("calibration-panel").hidden=true;
     message("error","Calibration saved. Remove the rectangle, capture a part, and confirm the setup is unchanged.");
     $("take-photo").focus();
@@ -298,12 +298,13 @@ $("forget-calibration").onclick=()=>{state.calibration=null;saveLocal("plywood.p
 $("import-target").onclick=()=>$("target-input").click();
 $("target-input").onchange=async()=>{const file=$("target-input").files[0];$("target-input").value="";if(!file)return;try{if(file.size>1_000_000)throw new Error("Reference file must be smaller than 1 MB.");const text=await file.text();state.target=validateTargetClient(/\.svg$/i.test(file.name)?svgTarget(text,file.name):JSON.parse(text));saveLocal("plywood.pages.target.v1",state.target);renderTarget();message("error");if(state.photo&&!state.photo.demoCase)analyze();else discardResult();}catch(error){message("error",`Could not import reference: ${error.message}`);}};
 $("reset-target").onclick=async()=>{state.target=await(await fetch("./practice-target.json")).json();saveLocal("plywood.pages.target.v1",null);renderTarget();analyze();};
-$("use-reference").onclick=()=>{if(!state.result||state.result.synthetic)return;state.target={...state.result.reference_outline,thickness_mm:thickness(),segmentation_threshold:state.result.quality.threshold};saveLocal("plywood.pages.target.v1",state.target);renderTarget();message("error","Reference saved in this browser. Verify this sample manually; a photo reference can carry its own defects and capture errors.");discardResult();};
+$("use-reference").onclick=()=>{if(!state.result||state.result.synthetic)return;state.target={...state.result.reference_outline,thickness_mm:thickness(),segmentation_threshold:state.result.quality.threshold,zoom_snapshot:state.photo.zoomSnapshot||null,capture_source:state.photo.captureSource||"photo"};saveLocal("plywood.pages.target.v1",state.target);renderTarget();message("error","Reference saved in this browser. Verify this sample manually; a photo reference can carry its own defects and capture errors.");discardResult();};
 $("download-reference").onclick=()=>download("plywood-reference.json",state.target);
 $("save-report").onclick=()=>{if(state.result){const {overlay,reference_outline,...report}=state.result;download("plywood-inspection.json",{...report,created_at:new Date().toISOString(),reference:state.result.synthetic?"synthetic-practice":state.target,calibration:state.result.synthetic?"synthetic-projection":mode()==="fixed"?state.calibration:null});}};
 
 (async()=>{try{const saved=readSaved("plywood.pages.target.v1");state.target=saved?validateTargetClient(saved):await(await fetch("./practice-target.json")).json();renderTarget();renderSetup();}catch(error){message("error",`Setup could not load: ${error.message}`);}})();
 
+const zoom={range:null,applying:false};
 const savedBatch=readSaved("plywood.batch.v1");
 const batch={stream:null,running:false,timer:null,epoch:0,recorder:null,audio:null,lastManualPhoto:null,threshold:null,
   session:savedBatch?.version===1&&Array.isArray(savedBatch.rows)?savedBatch:null,
@@ -321,6 +322,7 @@ function ensureSession(){
   const key=signature();
   if(batch.session?.rows.length&&batch.session.signature!==key)throw new Error("The reference or calibration differs from this session. Download its CSV and choose New session before continuing.");
   if(!batch.session||batch.session.signature!==key)batch.session={version:1,id:new Date().toISOString(),name:$("session-name").value.trim()||"Workshop session",prefix:$("part-prefix").value.trim()||"Part",signature:key,rows:[]};
+  if(batch.stream&&state.calibration.capture_source==="live-video")checkLiveZoom(true);
   persistSession();return batch.session;
 }
 function renderBatch(){
@@ -337,6 +339,8 @@ function renderBatch(){
   for(const element of document.querySelectorAll('.mode-picker input'))element.disabled=locked;
   for(const id of ["take-photo","choose-photo","run-demo","import-target","reset-target","open-calibration","save-calibration"])$(id).disabled=locked||processing;
   $("use-reference").disabled=locked||processing||!state.result||!!state.result.synthetic;
+  if(zoom.applying){$("start-batch").disabled=true;$("live-calibrate").disabled=true;$("live-snapshot").disabled=true;}
+  renderZoom();
   $("batch-rows").replaceChildren();
   $("batch-table-caption").textContent=rows.length?`Latest ${Math.min(10,rows.length)} of ${rows.length} captured parts · all rows are in the CSV.`:"No parts logged yet.";
   for(const row of rows.slice(-10).reverse()){
@@ -361,15 +365,70 @@ function beep(){
 function pauseBatch(text="Paused · session rows are saved. Resume with an empty surface."){
   batch.running=false;batch.epoch++;clearTimeout(batch.timer);batch.timer=null;batch.recorder?.resetGate();batch.message=text;batch.state="paused";renderBatch();
 }
+function currentZoom(){
+  const video=$("live-video"),track=batch.stream?.getVideoTracks()[0];
+  if(!track||!zoom.range)throw new Error("Start the live camera before choosing zoom.");
+  return PlywoodZoom.snapshot(track,zoom.range,video.videoWidth,video.videoHeight);
+}
+function checkLiveZoom(requireReference=false){
+  const current=currentZoom();PlywoodZoom.assertSame(state.calibration?.zoom_snapshot,current);
+  if(requireReference&&state.target?.source==="unvalidated-calibrated-photo")PlywoodZoom.assertSame(state.target.zoom_snapshot,current);
+}
+function zoomLocked(){return state.calibration?.capture_source==="live-video"||state.calibrationPhoto?.captureSource==="live-video"||!!state.target?.zoom_snapshot;}
+function renderZoom(){
+  const range=zoom.range,locked=zoomLocked();
+  $("live-zoom").disabled=!batch.stream||!range||locked||batch.running||zoom.applying;
+  $("unlock-zoom").disabled=!batch.stream||!locked||batch.running||zoom.applying;
+  if(!range)return;
+  Object.assign($("live-zoom"),{min:range.min,max:range.max,step:range.step,value:range.value});
+  $("zoom-value").textContent=`${num(range.value,1)}×${locked?" · locked":""}`;
+  $("live-video").style.transform=range.mode==="crop"?`scale(${range.value})`:"none";
+  const kind=range.mode==="camera"?"Camera zoom exposed by your browser; optical quality is not guaranteed.":"Software crop: Firefox did not expose camera zoom. This uses fewer source pixels and can reduce detail.";
+  $("zoom-help").textContent=`${kind} ${locked?"Locked to protect calibration. Use Change zoom / recalibrate to adjust it.":"Choose zoom before calibration. Capture the rectangle and test part at this setting."}`;
+}
+async function initializeZoom(){
+  const video=$("live-video"),track=batch.stream.getVideoTracks()[0],saved=state.calibration?.zoom_snapshot;
+  zoom.range=PlywoodZoom.descriptor(track,video.videoWidth,video.videoHeight,saved?.mode);
+  try{if(saved){zoom.range.value=await PlywoodZoom.apply(track,zoom.range,saved.value);PlywoodZoom.assertSame(saved,currentZoom());}}
+  catch(error){message("batch-error",`${error.message} Use Change zoom / recalibrate before measuring.`);}
+  renderZoom();
+}
+async function invalidateZoomSetup(){
+  let replacement=null;
+  if(state.target?.source?.startsWith("unvalidated-")){
+    const response=await fetch("./practice-target.json");if(!response.ok)throw new Error("Could not reset the photo reference. Reload and try again.");replacement=await response.json();
+  }
+  state.request++;state.calibration=null;state.calibrationPhoto=null;state.corners=[];state.photo=null;
+  saveLocal("plywood.pages.calibration.v1",null);$("setup-unchanged").checked=false;
+  if(replacement){state.target=replacement;saveLocal("plywood.pages.target.v1",null);renderTarget();}
+  $("calibration-canvas").hidden=true;$("calibration-empty").hidden=false;$("corner-progress").textContent="Choose a new calibration photo to begin.";
+  $("photo-canvas").hidden=true;$("empty-stage").hidden=false;$("photo-badge").textContent="NO PHOTO";
+  discardResult();renderSetup();
+}
+$("live-zoom").oninput=()=>{$("zoom-value").textContent=`${num($("live-zoom").value,1)}×`;};
+$("live-zoom").onchange=async()=>{
+  if(zoomLocked()||batch.running||zoom.applying){renderZoom();return;}
+  const requested=Number($("live-zoom").value);zoom.applying=true;renderBatch();message("batch-error");
+  try{await invalidateZoomSetup();zoom.range.value=await PlywoodZoom.apply(batch.stream.getVideoTracks()[0],zoom.range,requested);batch.message="Zoom set. Calibrate from a live frame, then capture the test part.";}
+  catch(error){message("batch-error",error.message);}
+  finally{zoom.applying=false;renderBatch();}
+};
+$("unlock-zoom").onclick=async()=>{
+  if(batch.running||zoom.applying)return;zoom.applying=true;renderBatch();
+  try{await invalidateZoomSetup();batch.message="Zoom unlocked. Choose zoom, recalibrate, and capture a new test part. Existing session rows are preserved.";}
+  catch(error){message("batch-error",error.message);}
+  finally{zoom.applying=false;renderBatch();}
+};
 async function startLive(){
   message("batch-error");
   try{
     if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia)throw new Error("Live camera access needs your HTTPS website (or localhost for desktop testing). Use the published GitHub Pages URL on your phone.");
-    const stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:"environment"},width:{ideal:1920},height:{ideal:1080}}});
+    const stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:"environment"},width:{ideal:3840},height:{ideal:2160},frameRate:{ideal:15,max:30}}});
     batch.stream=stream;const video=$("live-video");video.srcObject=stream;video.hidden=false;$("live-empty").hidden=true;
     await video.play();
     if(!video.videoWidth)await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error("The camera did not produce a frame. Stop and restart it.")),10000);video.addEventListener("loadedmetadata",()=>{clearTimeout(timer);resolve();},{once:true});});
     $("live-info").textContent=`Live feed: ${video.videoWidth} × ${video.videoHeight}. Calibrate using a frame from this feed; keep the mount and camera settings unchanged.`;
+    await initializeZoom();
     $("setup-unchanged").checked=false;
     for(const track of stream.getVideoTracks())track.addEventListener("ended",()=>stopLive(),{once:true});
     batch.message="Camera ready. Calibrate from a live frame, then inspect and save your test part as the reference.";renderBatch();
@@ -380,17 +439,24 @@ function stopLive(){
   const stream=batch.stream;batch.stream=null;stream?.getTracks().forEach(track=>track.stop());
   $("live-video").srcObject=null;$("live-video").hidden=true;$("live-empty").hidden=false;$("setup-unchanged").checked=false;renderBatch();
 }
-async function liveFrame(){
+async function liveFrame(forCalibration=false){
   const video=$("live-video");
   if(!batch.stream||!video.videoWidth||video.readyState<2)throw new Error("Start the live camera and wait for a clear frame first.");
-  const sourceSize=[video.videoWidth,video.videoHeight],scale=Math.min(1,1600/Math.max(...sourceSize)),canvas=document.createElement("canvas");
-  canvas.width=Math.round(sourceSize[0]*scale);canvas.height=Math.round(sourceSize[1]*scale);canvas.getContext("2d").drawImage(video,0,0,canvas.width,canvas.height);
+  if(zoom.applying)throw new Error("Wait for the zoom adjustment to finish.");
+  const snapshot=currentZoom();
+  if(!forCalibration&&state.calibration?.capture_source==="live-video")checkLiveZoom();
+  const sourceSize=[video.videoWidth,video.videoHeight];
+  const rect=zoom.range.mode==="crop"?PlywoodZoom.crop(...sourceSize,zoom.range.value):{x:0,y:0,width:sourceSize[0],height:sourceSize[1]};
+  const scale=Math.min(1,1600/Math.max(rect.width,rect.height)),canvas=document.createElement("canvas");
+  canvas.width=Math.round(rect.width*scale);canvas.height=Math.round(rect.height*scale);
+  canvas.getContext("2d").drawImage(video,rect.x,rect.y,rect.width,rect.height,0,0,canvas.width,canvas.height);
   const dataUrl=canvas.toDataURL("image/jpeg",.94),image=new Image();image.src=dataUrl;await image.decode();
-  return{dataUrl,image,imageSize:[canvas.width,canvas.height],sourceSize,captureSource:"live-video"};
+  PlywoodZoom.assertSame(snapshot,currentZoom());
+  return{dataUrl,image,imageSize:[canvas.width,canvas.height],sourceSize,captureSource:"live-video",zoomSnapshot:snapshot};
 }
 async function calibrateLive(){
   message("batch-error");
-  try{state.calibrationPhoto=await liveFrame();state.corners=[];$("plane-confirmed").checked=false;message("calibration-error");$("calibration-panel").hidden=false;renderSetup();drawCalibration();$("calibration-panel").scrollIntoView({behavior:"smooth",block:"start"});}
+  try{state.calibrationPhoto=await liveFrame(true);state.corners=[];$("plane-confirmed").checked=false;message("calibration-error");$("calibration-panel").hidden=false;renderSetup();drawCalibration();renderBatch();$("calibration-panel").scrollIntoView({behavior:"smooth",block:"start"});}
   catch(error){message("batch-error",error.message);}
 }
 async function snapshotLive(){
@@ -414,7 +480,7 @@ async function batchTick(epoch){
     if(outcome.result){state.photo=photo;state.result=outcome.result;renderResults();appendRow(outcome.result,"stable_live",outcome.samples);}
   }catch(error){
     if(!batch.running||epoch!==batch.epoch)return;
-    if(/dimensions changed|Thickness differs|Confirm that|calibrat|engine could not|took too long/i.test(error.message)){pauseBatch("Paused · check the setup before resuming.");message("batch-error",error.message);return;}
+    if(/dimensions changed|Thickness differs|Confirm that|calibrat|zoom|engine could not|took too long/i.test(error.message)){pauseBatch("Paused · check the setup before resuming.");message("batch-error",error.message);return;}
     const outcome=batch.recorder.observe(error.code==="NO_PART"?{kind:"empty"}:{kind:"invalid",message:error.message},performance.now());batch.message=outcome.message;batch.state=outcome.state;
   }
   renderBatch();if(batch.running&&epoch===batch.epoch)batch.timer=setTimeout(()=>batchTick(epoch),750);

@@ -8,9 +8,10 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <title>Plywood Inspector</title>
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=zoom-1">
   <script src="./batch-core.js" defer></script>
-  <script src="./app.js" defer></script>
+  <script src="./zoom-core.js" defer></script>
+  <script src="./app.js?v=zoom-1" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -38,7 +39,7 @@
         <div class="capture-actions"><button id="take-photo" class="button primary"><span aria-hidden="true">＋</span> Take a photo</button><button id="choose-photo" class="button secondary">Choose photo</button></div>
         <input id="camera-input" type="file" accept="image/*" capture="environment" hidden>
         <input id="photo-input" type="file" accept="image/*" hidden>
-        <p class="micro" id="capture-help">Keep the phone at 1× zoom. Photos are processed in this browser and are not uploaded.</p>
+        <p class="micro" id="capture-help">Keep the calibrated zoom fixed. Photos are processed in this browser and are not uploaded.</p>
         <div id="error" class="error" role="alert" hidden></div>
         <div id="busy" class="busy" role="status" hidden><span class="spinner"></span><span id="busy-text">Finding the outline…</span></div>
         <details id="edge-tools"><summary>Refine the detected edge</summary><p class="micro">Tap inside the plywood to choose it. If shadows are included, adjust the brightness cutoff and check the outline carefully.</p><div class="field-row"><label for="edge-threshold">Brightness cutoff</label><input id="edge-threshold" type="range" min="5" max="245" value="125"><output id="threshold-label">Auto</output><button id="reset-threshold" class="text-button">Auto</button></div></details>
@@ -63,6 +64,7 @@
         <div class="live-stage"><p id="live-empty">Start the rear camera for hands-free capture.</p><video id="live-video" autoplay muted playsinline hidden></video></div>
         <div class="small-actions"><button id="start-live" class="button secondary">Start live camera</button><button id="stop-live" class="text-button" disabled>Stop camera</button></div>
         <p id="live-info" class="micro">Live capture needs HTTPS. Firefox on Android is supported by the browser APIs used here; actual device accuracy still needs testing.</p>
+        <div class="zoom-controls"><label class="field-label" for="live-zoom">Live camera zoom <output id="zoom-value">1.0×</output></label><input id="live-zoom" type="range" min="1" max="8" step="0.1" value="1" disabled><p id="zoom-help" class="micro">Start the camera, choose zoom, then calibrate. Zoom locks when you capture calibration or save a reference.</p><button id="unlock-zoom" class="text-button" disabled>Change zoom / recalibrate</button></div>
         <div class="small-actions"><button id="live-calibrate" class="text-button" disabled>1. Calibrate from live frame</button><button id="live-snapshot" class="text-button" disabled>2. Inspect live frame</button></div>
         <p class="micro">Calibrate using a measured rectangle at the part’s top-face height. Remove it, inspect your good test part, then choose “Use this outline as reference.” Batch mode keeps that part’s brightness cutoff, so keep lighting consistent. A still-photo calibration cannot be reused for the live feed.</p>
       </div><div>
@@ -90,7 +92,7 @@
 
     <section id="calibration-panel" class="panel calibration-panel" hidden>
       <div class="panel-heading"><div><p class="eyebrow">FIXED CAMERA / ONE-TIME SETUP</p><h2>Give the camera a sense of scale.</h2></div><button id="close-calibration" class="text-button">Close ×</button></div>
-      <ol class="calibration-steps"><li>Lock the phone above a dark matte surface. Use the same camera, orientation, resolution, and 1× zoom for every shot.</li><li>Place a plain, accurately measured rectangle at the <strong>same height as the plywood’s top face</strong>. A rectangular plywood offcut of the same thickness works. Use a large rectangle near the inspection area.</li><li>Photograph it, then tap its corners in order: <strong>top left → top right → bottom right → bottom left</strong>. Enter its measured width and height.</li><li>Save, then remove the rectangle. Recalibrate if anything moves, the lens/zoom changes, or the part’s thickness changes. Autofocus and lens distortion can still affect measurements.</li></ol>
+      <ol class="calibration-steps"><li>Lock the phone above a dark matte surface. Use the same camera, orientation, resolution, and selected zoom for every shot.</li><li>Place a plain, accurately measured rectangle at the <strong>same height as the plywood’s top face</strong>. A rectangular plywood offcut of the same thickness works. Use a large rectangle near the inspection area.</li><li>Photograph it, then tap its corners in order: <strong>top left → top right → bottom right → bottom left</strong>. Enter its measured width and height.</li><li>Save, then remove the rectangle. Recalibrate if anything moves, the lens/zoom changes, or the part’s thickness changes. Autofocus and lens distortion can still affect measurements.</li></ol>
       <div class="calibration-layout"><div><button id="calibration-camera" class="button primary">Photograph setup rectangle</button><button id="calibration-upload" class="text-button">Choose existing photo</button><input id="calibration-camera-input" type="file" accept="image/*" capture="environment" hidden><input id="calibration-file-input" type="file" accept="image/*" hidden><div id="calibration-stage" class="calibration-stage"><p id="calibration-empty">Your calibration photo will appear here.</p><canvas id="calibration-canvas" hidden aria-label="Tap four rectangle corners, beginning at top left." role="img"></canvas></div><p id="corner-progress" class="micro">Choose a photo to begin.</p><button id="clear-corners" class="text-button">Reset corner selection</button></div><div><label class="field-label" for="calibration-unit">Measurement units</label><select id="calibration-unit"><option value="mm">Millimeters</option><option value="in">Inches</option></select><label class="field-label" for="rectangle-width">Rectangle width</label><input id="rectangle-width" type="number" step="any" min="0" placeholder="Measured left-to-right"><label class="field-label" for="rectangle-height">Rectangle height</label><input id="rectangle-height" type="number" step="any" min="0" placeholder="Measured top-to-bottom"><p id="calibration-thickness" class="micro"></p><label class="check-label"><input id="plane-confirmed" type="checkbox"><span>I measured this rectangle and placed its surface at the plywood’s top-face height.</span></label><button id="save-calibration" class="button primary">Save calibration</button><div id="calibration-error" class="error" role="alert" hidden></div><p class="micro">A four-corner calibration corrects planar perspective. It does not correct camera lens distortion or establish measurement uncertainty.</p><button id="forget-calibration" class="text-button danger">Forget saved calibration</button></div></div>
     </section>
     <footer><span>Built for a teacher’s judgment.</span><span>On-device processing · no photo uploads · no automatic grades</span></footer>

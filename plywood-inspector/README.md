@@ -30,7 +30,7 @@ browsing or clearing site data can discard it; download the CSV when done.
 
 1. Use light plywood against a dark matte surface; keep the full outline in
    view. Select the actual thickness (default 1/8 inch).
-2. For dimensions, fix the camera near overhead at 1×. Calibrate using four
+2. For dimensions, fix the camera near overhead and choose zoom first. Calibrate using four
    corners of a large, accurately measured rectangle whose surface is at the
    **same height as the part's top face**. Then remove the rectangle.
 3. Keep camera, lens/zoom, crop/resolution, orientation, focus behavior, work
@@ -43,6 +43,25 @@ Fixed-camera alignment preserves scale. Handheld mode compares proportions,
 normalizes size, and does not recover perspective or absolute dimensions.
 
 ## Batch session: measure, beep, swap
+
+### Zoom for a higher mount
+
+Start the live camera and set **Live camera zoom** before calibration. The app
+uses the camera zoom control if the browser exposes and confirms it; this does
+not guarantee optical zoom or lossless detail. Otherwise it explicitly labels
+a software center-crop fallback. Software crops retain only the available
+native pixels, rather than upscaling to pretend detail was preserved. The app
+requests a higher-resolution feed where available.
+
+Zoom locks as soon as you capture a live calibration photo and stays locked
+for the test part and batch. Its setting, camera identity when available, and
+frame dimensions are saved with calibration and photo references. Camera
+restarts restore the saved setting when supported; mismatches block measuring.
+Use **Change zoom / recalibrate** to adjust it. This clears calibration and
+photo references and requires new captures, while keeping existing session
+rows for CSV export. New zoom tracking requires a fresh live calibration after
+updating from the earlier version. This control applies to the in-page live
+feed; the phone's separate camera/photo picker retains its own zoom controls.
 
 1. Open **Batch session** and press **Start live camera**. Mount it securely.
 2. Use **Calibrate from live frame** and calibrate at top-face height. A
@@ -93,6 +112,7 @@ No build is needed for publication. Optional checks, with Node installed:
 ```bash
 node checks/vision.test.cjs
 node checks/batch.test.cjs
+node checks/zoom.test.cjs
 node --check app.js
 ```
 
