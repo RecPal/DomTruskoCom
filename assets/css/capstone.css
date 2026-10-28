@@ -255,22 +255,24 @@
     border: 0;
 }
 
-/* The render is letterboxed to 2.39:1 inside 16:9; a 2.4:1 frame crops the bars off. */
+/* The render is letterboxed to 2.39:1 inside 16:9. Cover-cropping into a taller frame trims the bars and zooms in. */
 #capstone-feature .capstone-feature-image {
     position: relative;
-    aspect-ratio: 2.4 / 1;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 0.6em;
     background: #10161f;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 24px 48px -24px rgba(5, 15, 30, 0.7);
 }
 
+/* Oversize the media box by the bar height (1080 / 805) so cover fills the frame with picture, never bars. */
 #capstone-feature .capstone-feature-image img,
 #capstone-feature .capstone-feature-video {
     position: absolute;
-    inset: 0;
+    top: -17.1%;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 134.2%;
     object-fit: cover;
 }
 
@@ -282,6 +284,27 @@
 
 #capstone-feature .capstone-feature-video.is-playing {
     opacity: 1;
+}
+
+/* Side by side, the frame grows to the height of the copy beside it. */
+@media screen and (min-width: 981px) {
+    #capstone-feature .row {
+        align-items: stretch;
+    }
+
+    #capstone-feature .capstone-feature-media {
+        display: flex;
+    }
+
+    #capstone-feature .capstone-feature-image {
+        flex: 1;
+        aspect-ratio: auto;
+        min-height: 18em;
+    }
+
+    #capstone-feature .capstone-feature-copy {
+        align-self: center;
+    }
 }
 
 #capstone-feature h2 {
