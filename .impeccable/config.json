@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-28T07:31:18.809Z",
+        "reason": "Claude verified in render at 375px and 1440px: full-bleed .wrapper sections inset content via .container (>=20px gutters), feature-list sections pad 2-4em under border-top; rendered detect reports no cramped-padding"
+      }
+    ]
+  }
+}

@@ -4,8 +4,8 @@
     position: relative;
     aspect-ratio: 20 / 9;
     overflow: hidden;
-    border: 1px solid #000;
     border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(30, 34, 40, 0.08), 0 18px 40px -20px rgba(30, 34, 40, 0.45);
 }
 
 .homepage #main .about-me-photo img {
@@ -53,7 +53,7 @@
     min-width: 0;
 }
 
-/* Reveal a beveled selection frame without changing the project grid. */
+/* Lift the card onto a raised surface without changing the project grid. */
 .homepage #highlights .project-card {
     display: block;
     flex: 1;
@@ -61,26 +61,27 @@
     isolation: isolate;
     color: inherit;
     text-decoration: none;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .homepage #highlights .project-card::before {
     content: "";
     position: absolute;
-    inset: -0.75em;
+    inset: -1em;
     z-index: -1;
-    border: 2px solid;
-    border-color: #969ba2 #3d4249 #30343a #858b93;
-    border-radius: 0.3em;
-    background: linear-gradient(145deg, #626871, #484e56);
-    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2),
-        inset -1px -1px 0 rgba(0, 0, 0, 0.2),
-        0 5px 12px rgba(30, 34, 40, 0.2);
+    border-radius: 1em;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(30, 34, 40, 0.06), 0 22px 44px -22px rgba(22, 71, 115, 0.45);
     opacity: 0;
-    transition: opacity 180ms ease;
+    transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.homepage #highlights .project-card > .image.featured img {
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .homepage #highlights .project-card h3 {
-    transition: color 180ms ease;
+    transition: color 200ms ease-out;
 }
 
 .homepage #highlights .project-card p {
@@ -89,12 +90,17 @@
 
 .homepage #highlights .project-card:hover,
 .homepage #highlights .project-card:focus-visible {
-    color: #f5f6f7;
+    transform: translateY(-4px);
 }
 
 .homepage #highlights .project-card:hover h3,
 .homepage #highlights .project-card:focus-visible h3 {
-    color: #fff;
+    color: #164773;
+}
+
+.homepage #highlights .project-card:hover > .image.featured img,
+.homepage #highlights .project-card:focus-visible > .image.featured img {
+    transform: scale(1.035);
 }
 
 .homepage #highlights .project-card:hover::before,
@@ -104,14 +110,23 @@
 
 .homepage #highlights .project-card:focus-visible {
     outline: 2px solid #1f6bae;
-    outline-offset: 0.9em;
+    outline-offset: 1.15em;
+    border-radius: 0.1em;
 }
 
 @media (prefers-reduced-motion: reduce) {
     .homepage #highlights .project-card,
     .homepage #highlights .project-card::before,
+    .homepage #highlights .project-card > .image.featured img,
     .homepage #highlights .project-card h3 {
         transition: none;
+    }
+
+    .homepage #highlights .project-card:hover,
+    .homepage #highlights .project-card:focus-visible,
+    .homepage #highlights .project-card:hover > .image.featured img,
+    .homepage #highlights .project-card:focus-visible > .image.featured img {
+        transform: none;
     }
 }
 
@@ -240,10 +255,33 @@
     border: 0;
 }
 
-#capstone-feature img {
-    height: auto;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 0.25em;
+/* The render is letterboxed to 2.39:1 inside 16:9; a 2.4:1 frame crops the bars off. */
+#capstone-feature .capstone-feature-image {
+    position: relative;
+    aspect-ratio: 2.4 / 1;
+    overflow: hidden;
+    border-radius: 0.6em;
+    background: #10161f;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 24px 48px -24px rgba(5, 15, 30, 0.7);
+}
+
+#capstone-feature .capstone-feature-image img,
+#capstone-feature .capstone-feature-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#capstone-feature .capstone-feature-video {
+    display: block;
+    opacity: 0;
+    transition: opacity 450ms ease-out;
+}
+
+#capstone-feature .capstone-feature-video.is-playing {
+    opacity: 1;
 }
 
 #capstone-feature h2 {
@@ -289,4 +327,15 @@
     #capstone-feature h2 {
         font-size: 1.5em;
     }
+}
+
+/* Keep paragraph measure comfortable in wide columns. */
+.homepage #highlights .project-card p {
+    max-width: 62ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#capstone-feature .capstone-feature-copy p {
+    max-width: 68ch;
 }

@@ -4,9 +4,9 @@
 <head>
 	<title>Dominick Trusko's Web Portfolio</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css?v=project-previews-1" />
-	<link rel="stylesheet" href="assets/css/capstone.css?v=project-card-selection-2" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css?v=refresh-1" />
+	<link rel="stylesheet" href="assets/css/capstone.css?v=refresh-2" />
 </head>
 
 <body class="homepage is-preload">
@@ -16,11 +16,9 @@
 		<section id="header" class="wrapper">
 
 			<!-- Logo -->
-			<div style="background-color: rgba(0, 0, 0, 0.5); width:30em; height:6em;">
-				<div id="logo">
-					<h1><a href="index.html">Dominick Trusko</a></h1>
-					<p>dtrusko@gmail.com | (415) 860-5126</p>
-				</div>
+			<div id="logo">
+				<h1><a href="index.html">Dominick Trusko</a></h1>
+				<p>dtrusko@gmail.com | (415) 860-5126</p>
 			</div>
 
 			<!-- Nav -->
@@ -35,8 +33,8 @@
 				<p class="style2">
 					Personal development through collaborative work and self-led projects<br class="mobile-hide" />
 				</p>
-				<p class="style3">From my upbringing in the <strong>Lone-star state</strong> , to my current residence
-					in <strong>Pheonix Arizona</strong></string>,
+				<p class="style3">From my upbringing in the <strong>Lone Star State</strong>, to my current residence
+					in <strong>Phoenix, Arizona</strong>,
 					I have always lived by the principles instilled by my mentors. Work hard, do it right, and change
 					the world.
 				</p>
@@ -202,7 +200,11 @@
             <div class="container">
                 <div class="row gtr-150 aln-middle">
                     <div class="col-6 col-12-medium">
-                        <a href="capstone.html" class="image featured capstone-feature-image"><img src="images/Capstone/animation-overview.webp" alt="Rendered view of the IIoT smart manufacturing test cell" loading="lazy" width="1600" height="900" /></a>
+                        <a href="capstone.html" class="image featured capstone-feature-image">
+                            <img src="images/Capstone/animation-overview.webp" alt="Rendered view of the IIoT smart manufacturing test cell" loading="lazy" width="1600" height="900" />
+                            <video class="capstone-feature-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"
+                                data-src="assets/videos/Capstone/MEA_2ndPass-web.mp4" data-loop-start="4.6" data-loop-end="54.4"></video>
+                        </a>
                     </div>
                     <div class="col-6 col-12-medium capstone-feature-copy">
                         <h2 id="capstone-feature-heading"><a href="capstone.html">IIoT Smart Manufacturing Test Cell</a></h2>
@@ -241,13 +243,13 @@
 							<form method="post" action="#">
 								<div class="row gtr-50">
 									<div class="col-6 col-12-small">
-										<input type="text" name="name" id="contact-name" placeholder="Name" />
+										<input type="text" name="name" id="contact-name" placeholder="Name" aria-label="Name" autocomplete="name" />
 									</div>
 									<div class="col-6 col-12-small">
-										<input type="text" name="email" id="contact-email" placeholder="Email" />
+										<input type="email" name="email" id="contact-email" placeholder="Email" aria-label="Email" autocomplete="email" />
 									</div>
 									<div class="col-12">
-										<textarea name="message" id="contact-message" placeholder="Message"
+										<textarea name="message" id="contact-message" placeholder="Message" aria-label="Message"
 											rows="4"></textarea>
 									</div>
 									<div class="col-12">
@@ -289,7 +291,7 @@
 									<section>
 										<h3 class="icon solid fa-envelope">Email</h3>
 										<p>
-											<a href="#">dtrusko@gmail.com</a>
+											<a href="mailto:dtrusko@gmail.com">dtrusko@gmail.com</a>
 										</p>
 									</section>
 								</div>
@@ -325,6 +327,7 @@
 	<script src="assets/js/util.js?v=project-previews-1"></script>
 	<script src="assets/js/navigation.js?v=project-previews-3"></script>
 	<script src="assets/js/main.js?v=project-previews-1"></script>
+	<script src="assets/js/featurevideo.js?v=1"></script>
 
 </body>
 

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["C:\\Users\\dtrus\\AppData\\Local\\Temp\\claude\\D--Godot-3dHandGame-DomTruskoCom\\a636e8bc-9c79-469b-8723-c8e15aa0b973\\scratchpad\\range_server.py", "8765"],
+      "port": 8765
+    }
+  ]
+}

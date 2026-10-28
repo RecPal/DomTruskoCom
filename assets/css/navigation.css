@@ -65,6 +65,7 @@
     font-size: 14px;
     font-weight: 700;
     text-decoration: none;
+    transition: background-color 200ms ease-out, color 200ms ease-out;
 }
 
 #nav .project-category-trigger::after {
@@ -98,12 +99,21 @@
 }
 
 #nav .project-previews > li {
-    padding: 0;
+    padding: 6px 0;
     border-bottom: 1px solid #d3e1e8;
+    transition: border-color 260ms ease-out;
 }
 
 #nav .project-previews > li:last-child {
     border-bottom: 0;
+}
+
+/* The highlighted tile replaces the hairlines on either side of it. */
+#nav .project-previews > li:hover,
+#nav .project-previews > li:focus-within,
+#nav .project-previews > li:has(+ li:hover),
+#nav .project-previews > li:has(+ li:focus-within) {
+    border-bottom-color: transparent;
 }
 
 #nav .project-preview {
@@ -111,9 +121,18 @@
     grid-template-columns: 240px minmax(0, 1fr);
     align-items: center;
     gap: 22px;
-    padding: 20px 0;
+    margin: 0 -12px;
+    padding: 14px 12px;
+    border-radius: 10px;
     color: inherit;
     text-decoration: none;
+    transition: background-color 260ms ease-out, box-shadow 260ms ease-out;
+}
+
+#nav .project-preview:hover,
+#nav .project-preview:focus-visible {
+    background: #e5eef7;
+    box-shadow: inset 0 0 0 1px #c2d6e8, 0 8px 20px -12px rgba(22, 71, 115, 0.4);
 }
 
 #nav .project-preview-image {
@@ -123,8 +142,9 @@
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border: 1px solid #dce3e9;
-    border-radius: 4px;
+    border-radius: 6px;
     background: #f1f4f7;
+    transition: border-color 260ms ease-out;
 }
 
 #nav .project-preview-image img {
@@ -132,6 +152,12 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#nav .project-preview:hover .project-preview-image img,
+#nav .project-preview:focus-visible .project-preview-image img {
+    transform: scale(1.04);
 }
 
 #nav .project-preview-copy {
@@ -148,6 +174,7 @@
     font-weight: 700;
     line-height: 1.18;
     text-wrap: balance;
+    transition: color 260ms ease-out;
 }
 
 #nav .project-preview-description {
@@ -173,13 +200,12 @@
 
 #nav .project-preview:hover .project-preview-title,
 #nav .project-preview:focus-visible .project-preview-title {
-    color: #22637b;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: #164773;
 }
 
-#nav .project-preview:hover .project-preview-image {
-    border-color: #4b839a;
+#nav .project-preview:hover .project-preview-image,
+#nav .project-preview:focus-visible .project-preview-image {
+    border-color: #b7cde0;
 }
 
 #nav a:focus-visible {
@@ -188,7 +214,19 @@
 }
 
 #nav .project-preview:focus-visible {
-    outline-offset: -3px;
+    outline: 2px solid #1f6bae;
+    outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #nav .project-preview-image img {
+        transition: none;
+    }
+
+    #nav .project-preview:hover .project-preview-image img,
+    #nav .project-preview:focus-visible .project-preview-image img {
+        transform: none;
+    }
 }
 
 /* Long project names should remain readable in the existing mobile navigation. */
